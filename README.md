@@ -1,7 +1,7 @@
 #Ionic Auth starter with Laravel Passport
 
-## Laravel setup
-Run command
+## Configuración de Laravel 
+Ejecuta los siguientes comandos
 
 ```
 composer install
@@ -9,7 +9,7 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-Configure your database in __.env__ file
+Configura tu base de datos en el archivo __.env__ 
 
 ```
 DB_CONNECTION=mysql
@@ -20,39 +20,42 @@ DB_USERNAME=homestead
 DB_PASSWORD=secret
 ```
 
-Run migrations
+Ejecuta las migraciones
 
 ``` 
 php artisan migrate
 ```
 
-Install passport
+Instala passport
 ```
 php artisan passport:install
 ```
 
-## Ionic setup
+## Configuración de Ionic
 
-Install node modules
+Instala los módulos de node 
 ```
 npm install
 ```
 
-### Settings of passport client
-Copy client credentials of passport from table oauth_clients usually is the second record
+### Configuraciones del cliente passport
+Copia las credenciales de passport de la tabla oauth_clients, usualmente es el segundo registro
 
-Client id 2 named Laravel Password Grant Client
+El Cliente id 2 lleva por nombre Password Grant Client
 
-Or create new client for ionic app and save __Client ID__ and __Client Secret__
+Ó tambien puedes crear un nuevo cliente para ionic guardando __Client ID__ y __Client Secret__ usando
+
+
 
 ```
 php artisan passport:client --password
 ```
 
-Enter to file src/settings/Laravel.ts and modify json config, replace url and apiUrl with your project url and your passport client credentials
+Entra al archivo src/settings/Laravel.ts y modifica el json config, reemplaza la url y la apiUrl con la url de tu proyecto y tus credenciales de cliente passport
+
 
 ```
-// this example is running with php artisan serve
+// este ejemplo esta corriendo usando php artisan serve
 export const Service: any = {
 
     url: 'http://127.0.0.1:800',
@@ -67,16 +70,16 @@ export const Service: any = {
 };
 ```
 
-### Prevent enter to unauthorized pages
+### Para prevenir ingresos a páginas inautorizadas 
 
-Import AuthProvider to your page
+Importa AuthProvider a tu pagina
 
-Example 
+Ejemplo
 ```
 import { AuthProvider } from '../../providers/auth/auth';
 ```
 
-And add this function
+Y agrega esta función
 
 ```
 async ionViewCanEnter () {
@@ -84,6 +87,3 @@ async ionViewCanEnter () {
     return isAuthenticated;
 }
 ```
-
-### Donations
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/IvnAqn)
