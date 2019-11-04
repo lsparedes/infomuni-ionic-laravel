@@ -1,0 +1,40 @@
+<ion-header>
+   <ion-navbar color="rojo" style="opacity: 0.9">
+      <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Denuncia</ion-title>
+   </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+   <form [formGroup]="datos" novalidate>
+     <ion-item>
+       <ion-label>Tipo denuncia:</ion-label>
+       <ion-select formControlName="tipo" [(ngModel)]="tipo" required >
+         <ion-option  *ngFor="let tipo of tipos" [value]="tipo.nombre">{{tipo.nombre}} </ion-option>
+       </ion-select>
+     </ion-item>
+   <ion-item>
+       <ion-label floating>Escribe aquí...</ion-label>
+       <ion-textarea required type="text-area" formControlName="comentario" [(ngModel)]="comentario"></ion-textarea>
+   </ion-item>
+   <ion-item>
+      <ion-card-content style="text-align: center">
+         <img [src]="base64Image" onerror="this.src='https://equilibratechile.com/infomuni/img/defecto.png'" width="30%">
+         <button ion-button icon-right block (click)="takePicture();">
+           Tomar Foto
+           <ion-icon name="camera"></ion-icon>
+         </button>
+         <button ion-button block (click)="openGallery()">
+         Abrir galería
+         </button>
+      </ion-card-content>
+   </ion-item>
+   <br>
+   <button ion-button full (click)="uploadImage()">
+       Publicar
+       <ion-icon name="md-checkmark"></ion-icon>
+   </button>
+ </form>
+</ion-content>

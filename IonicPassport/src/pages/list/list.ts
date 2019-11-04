@@ -1,46 +1,58 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {  NavController, NavParams, App, ToastController } from 'ionic-angular';
 
-import { AuthProvider } from '../../providers/auth/auth';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import { DetalleseventosPage } from '../detalleseventos/detalleseventos';
+
 
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
 })
+
 export class ListPage {
-  selectedItem: any;
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    private authService: AuthProvider
-  ) {
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
+    eventos:any;
+    data:Observable<any>;
 
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
+    constructor(public navCtrl: NavController,
+                public navParams: NavParams,
+                public app: App,
+                public http: Http,
+                private toastCtrl:ToastController) {
 
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
-  }
+                  this.http.get('https://159.89.80.36/app-infomuni/consulta_eventos.php')
+                   .map(response => response.json())
+                   .subscribe(
+                      data =>
+                      {
+                        this.eventos = data;
+                        console.log(data);
+                      },
+                      err =>
+                      {
+                        console.log("Oops!");
+                        this.presentToast("No existen registros aún");
+                      }
+                  );
+      }
 
-  async ionViewCanEnter () {
-    let isAuthenticated = await this.authService.checkIsAuthenticated();
-    return isAuthenticated;
-  }
-
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
-      item: item
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 2000
     });
+    toast.present();
   }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ListPage');
+  }
+
+  detalles(id) {
+    this.navCtrl.push(DetalleseventosPage,{valor: id});
+  }
+
 }

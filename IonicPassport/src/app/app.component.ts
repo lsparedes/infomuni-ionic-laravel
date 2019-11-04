@@ -5,6 +5,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { InfomapaPage } from '../pages/infomapa/infomapa';
+import { ParticipacionPage } from '../pages/participacion/participacion';
+import { EmprendePage } from '../pages/emprende/emprende';
+import { EvidenciaPage } from '../pages/evidencia/evidencia';
+//import { PrincipalPage } from '../pages/principal/principal';
+
+
+
 import { AuthProvider } from '../providers/auth/auth';
 
 @Component({
@@ -13,9 +21,13 @@ import { AuthProvider } from '../providers/auth/auth';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = 'AuthPage';
+  rootPage: any = 'PrincipalPage';
+  pages: Array<{title: string, component: any, icon: string}>;
+  signal_app_id:string = '01dba292-79f5-4d49-bf3d-2b68486e15d0';
+  firebase_id:string= '586230391111';
+  icons: string[];
+  public userDetails : any;
 
-  pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
       private menuCtrl: MenuController,
@@ -23,20 +35,26 @@ export class MyApp {
     ) {
     this.initializeApp();
 
+    this.icons = ['home', 'calendar', 'navigate', 'stats', 'person', 'search'];
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'Inicio', component: HomePage, icon: this.icons[0] },
+      { title: 'Eventos', component: ListPage, icon: this.icons[1] },
+      { title: 'Infomapa', component: InfomapaPage, icon: this.icons[2]},
+      { title: 'Participación', component: ParticipacionPage, icon: this.icons[3]},
+      { title: 'Emprende', component: EmprendePage, icon: this.icons[4]},
+      { title: 'Evidencia', component: EvidenciaPage, icon: this.icons[5]},
+      // { title: 'Slides', component: SlidesPage }
+
     ];
 
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      this.menuCtrl.enable(false);
-      this.statusBar.styleDefault();
+      //this.menuCtrl.enable(false);
+      //this.statusBar.styleDefault();
+      this.splashScreen.hide();
       this.splashScreen.hide();
     });
   }
