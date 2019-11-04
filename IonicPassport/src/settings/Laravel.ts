@@ -12,7 +12,7 @@ export const Service: any = {
     passport: {
         'grant_type': 'password',
         'client_id': '1',
-        'client_secret': 'YEMDc65Fjcnn60nd1NoElboOiUIHnUooC02CSbRw',
+        'client_secret': 'i2fJPzB4SjQiQAi2lyml8Qv2uRcQH8vzgAaHm0bH',
     }
 
 };

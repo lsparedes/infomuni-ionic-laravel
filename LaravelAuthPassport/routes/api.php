@@ -23,4 +23,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     ]);
 });
 
+
 Route::post('register', 'Api\RegisterController@register');
+
+Route::resource('/events', 'EventsAppController');
+Route::resource('/services', 'EmprendeAppController');
+Route::resource('/participation', 'ParticipacionAppController');
+//Route::post('/test-post', 'TestController@test');
+//Route::post('/api-login', 'Api\AuthController@credentials2');

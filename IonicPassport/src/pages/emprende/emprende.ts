@@ -22,7 +22,7 @@ export class EmprendePage {
               public http: Http,
               private toastCtrl:ToastController) {
 
-              this.http.get('https://159.89.80.36/app-infomuni/consulta_servicios.php')
+              this.http.get('http://localhost:8000/api/services')
                    .map(response => response.json())
                    .subscribe(data =>
                       {

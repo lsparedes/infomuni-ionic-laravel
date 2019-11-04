@@ -22,7 +22,7 @@ export class ParticipacionPage {
               public http: Http,
               private toastCtrl:ToastController) {
 
-              this.http.get('https://159.89.80.36/app-infomuni/consulta_encuestas.php')
+              this.http.get('http://localhost:8000/api/participation')
                    .map(response => response.json())
                    .subscribe(data =>
                       {

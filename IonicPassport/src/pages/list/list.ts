@@ -23,7 +23,7 @@ export class ListPage {
                 public http: Http,
                 private toastCtrl:ToastController) {
 
-                  this.http.get('https://159.89.80.36/app-infomuni/consulta_eventos.php')
+                  this.http.get('http://localhost:8000/api/events')
                    .map(response => response.json())
                    .subscribe(
                       data =>
