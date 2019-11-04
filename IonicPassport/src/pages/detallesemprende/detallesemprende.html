@@ -1,0 +1,20 @@
+<ion-header>
+ <ion-navbar color="rojo" style="opacity: 0.9">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{nombre}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card class="pin" *ngFor="let detalle of detalles" style="border-radius: 10px;padding: 5%;padding-bottom: 2%;"  >
+    <p><b>{{detalle.nombre}}</b></p>
+    <p>{{detalle.descripcion_servicio}}</p>
+    <hr>
+    <p>Dirección: <b>{{detalle.direccion}}</b></p>
+    <p>Horario atención:<b> Lun a Vier {{detalle.horario_apertura}} - {{detalle.horario_cierre}}</b></p>
+    <p>Contacto: <b>{{detalle.contacto}}</b></p>
+    <hr>
+  </ion-card>
+</ion-content>

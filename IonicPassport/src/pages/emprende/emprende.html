@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar color="rojo" style="opacity: 0.9">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Emprende</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div padding style="text-align:center;" >
+    <p style="font-size:1.6rem;">Te presentamos el catálogo de emprendedores de la municipalidad. <br> <b>¡Los mejores productos/servicios podrás encontrarlos aquí!</b></p>
+  </div>
+  <hr>
+  <ion-card class="pin" *ngFor="let emp of emprende" style="border-radius: 10px;padding: 5%;padding-bottom: 2%;" (click)="detalles(emp.id)">
+    <p style="color:gray">Emprendedor</p>
+    <hr>
+    <br>
+    <p style="font-size:1.6rem;"><b>{{emp.nombre}}</b></p>
+    <p style="font-size:1.2rem">{{emp.direccion}}</p>
+    <p class="align-bottom" style="font-size:1.2rem;text-align: end;">Saber más <ion-icon name="arrow-forward"></ion-icon></p>
+   </ion-card>
+</ion-content>

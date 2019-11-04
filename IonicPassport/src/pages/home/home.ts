@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, Alert } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 
 import { AuthProvider } from '../../providers/auth/auth';
 import { UserProvider } from '../../providers/user/user';
@@ -29,7 +29,7 @@ export class HomePage {
     this.getUser();
   }
 
-  getUser () 
+  getUser ()
   {
     this.loading = true;
     this.userService.getUserInfo()

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar color="rojo" style="opacity: 0.9">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Evidencia</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div padding style="text-align:center;" >
+    <p style="font-size:1.6rem;">¿Hay algo que necesitamos solucionar, ver o mejorar? <br> <b>¡Adelante! Presiona el botón y comentanos tu experiencia.</b> </p>
+  </div>
+  <hr>
+  <button ion-button full (click)="denunciar()" style="width: 94%;margin-left: 10px">Denuncia aquí</button>
+  <hr>
+  <ion-card class="pin" *ngFor="let den of denuncias" style="border-radius: 10px;padding: 5%;padding-bottom: 2%;">
+      <p style="color:gray">{{den.nombre}}</p>
+      <hr>
+      <img src="{{den.imagen}}" style="border-radius: 5px">
+      <br>
+      <p style="font-size:1.6rem">{{den.descripcion}}</p>
+      <hr>
+      <p style="color:gray;text-align: end;">{{den.fecha}}</p>
+  </ion-card>
+</ion-content>
