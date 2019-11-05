@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, ToastController} from 'ionic-angular';
+
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
@@ -24,7 +25,7 @@ export class DetalleseventosPage {
 
               console.log("El valor del id seleccionado es: "+this.id);
 
-              this.http.get('https://159.89.80.36/app-infomuni/detalle_eventos.php?id='+this.id)
+              this.http.get('http://localhost:8000/api/eventos/'+this.id)
                .map(response => response.json())
                .subscribe(data =>
                   {

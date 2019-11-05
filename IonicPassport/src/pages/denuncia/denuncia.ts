@@ -10,6 +10,9 @@ import { EvidenciaPage } from '../evidencia/evidencia';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 
+
+
+
 @IonicPage()
 @Component({
   selector: 'page-denuncia',
@@ -28,6 +31,7 @@ export class DenunciaPage {
   tipos: any;
   base64Image : string;
   loading: Loading;
+  user: any;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -36,17 +40,17 @@ export class DenunciaPage {
               public formBuilder: FormBuilder,
               private toastCtrl:ToastController,
               private camera: Camera,
-              public loadingCtrl: LoadingController,) {
+              public loadingCtrl: LoadingController) {
 
                 this.datos =  formBuilder.group({
                   comentario: ['',[Validators.required,Validators.maxLength(140)]],
                   tipo: ['', Validators.required],
                 });
 
-                const data = JSON.parse(localStorage.getItem('userData'));
-                this.userDetails = data.userData;
+                // const data = JSON.parse(localStorage.getItem('userData'));
+                // this.userDetails = data.userData;
 
-                this.http.get('https://159.89.80.36/app-infomuni/consulta_tipo.php')
+                this.http.get('http://localhost:8000/api/tipo')
                                    .map(response => response.json())
                                    .subscribe(data =>
                                       {
@@ -105,11 +109,11 @@ export class DenunciaPage {
        });
 
        this.loading.present();
-       let url= 'https://159.89.80.36/app-infomuni/imagen.php';
+       let url= 'http://localhost:8000/api/denuncia_create';
        let postData= new FormData();
 
        postData.append('file', this.base64Image);
-       postData.append('username',this.userDetails.username);//necesito usar el nombre de la persona logeada
+       postData.append('username',this.user.id);//necesito usar el nombre de la persona logeada
        postData.append('comentario',this.comentario);
        postData.append('tipo',this.tipo);
        this.data = this.http.post(url, postData);
@@ -124,7 +128,7 @@ export class DenunciaPage {
   }
 
   reload(){
-    this.http.get('https://159.89.80.36/app-infomuni/consulta_denuncias.php')
+    this.http.get('http://localhost:8000/api/denuncia')
          .map(response => response.json())
          .subscribe(data =>
             {

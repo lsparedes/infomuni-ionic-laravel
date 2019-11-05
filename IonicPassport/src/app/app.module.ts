@@ -14,7 +14,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { SlidesPage } from '../pages/slides/slides';
 import { AuthPage } from '../pages/auth/auth';
-import { PrincipalPage } from '../pages/principal/principal';
+//import { PrincipalPage } from '../pages/principal/principal';
 import { InfomapaPage } from '../pages/infomapa/infomapa';
 import { ParticipacionPage } from '../pages/participacion/participacion';
 import { EvidenciaPage } from '../pages/evidencia/evidencia';

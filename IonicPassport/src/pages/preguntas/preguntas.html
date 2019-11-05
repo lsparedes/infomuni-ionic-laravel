@@ -21,10 +21,16 @@
         <ion-list  radio-group
                   (ionChange)="onChangeHandler($event)"
                   formControlName="composer">
-          <ion-item *ngFor="let resp of respuestas">
-            <ion-label>{{resp.respuesta}}</ion-label>
-            <ion-radio  value="{{resp.respuesta}}"></ion-radio>
-          </ion-item>
+                  <div *ngFor="let resp of respuestas">
+                    <ion-item *ngIf="pre.id==resp.preguntas_id">
+
+                      <ion-label>{{resp.respuesta}}</ion-label>
+                      <ion-radio  value="{{resp.respuesta}}"></ion-radio>
+
+                    </ion-item>
+                  </div>
+
+
         </ion-list>
       </form>
     </div>

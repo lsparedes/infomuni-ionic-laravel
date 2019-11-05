@@ -26,7 +26,7 @@ export class DetallesemprendePage {
               console.log("El valor del id seleccionado es: "+this.id);
 
 
-              this.http.get('https://159.89.80.36/app-infomuni/detalle_emprende.php?id='+this.id)
+              this.http.get('http://localhost:8000/api/emprende/'+this.id)
                  .map(response => response.json())
                  .subscribe(data =>
                     {

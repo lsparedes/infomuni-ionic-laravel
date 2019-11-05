@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ParticipacionPage } from '../participacion/participacion';
-
+import { UserProvider } from '../../providers/user/user';
 
 @IonicPage()
 @Component({
@@ -25,30 +25,32 @@ export class PreguntasPage {
  composer: string;
  composersForm: FormGroup;
  public userDetails : any;
- public  seleccion: any;
+ public seleccion: any;
  public hola:any;
+ user:any;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public app: App,
               public http: Http,
               private toastCtrl:ToastController,
-              private formBuilder: FormBuilder,) {
+              private formBuilder: FormBuilder,
+
+              private userService: UserProvider) {
 
              console.log("El id de la encuesta seleccionada es: "+this.id);
              this.unTextoRecibido  = navParams.get("valor2");
 
-             const data = JSON.parse(localStorage.getItem('userData'));
-             this.userDetails = data.userData;
 
-             this.http.get('https://159.89.80.36/infomuni/consulta_pregunta_encuestas.php?id='+this.id)
+
+             this.http.get('http://localhost:8000/api/preguntas/'+this.id)
              .map(response => response.json())
              .subscribe(data =>
                 {
                   this.preguntas = data;
                   this.hola=data[0].id;
-                  console.log("esto vale hola aquí:"+this.hola);
-                  console.log(data);
+                  //console.log("esto vale hola aquí:"+this.hola);
+                  console.log("preguntas: "+data);
                 },
                 err => {
                   console.log("Oops!");
@@ -56,12 +58,12 @@ export class PreguntasPage {
                 }
              );
 
-            this.http.get('https://159.89.80.36/infomuni/consulta_respuesta_encuestas.php?id='+this.id)
+            this.http.get('http://localhost:8000/api/respuestas/'+this.id)
            .map(response => response.json())
            .subscribe(data =>
               {
                 this.respuestas = data;
-                console.log(data);
+                console.log("respuestas: "+data);
               },
               err => {
                 console.log("Oops!");
@@ -74,9 +76,28 @@ export class PreguntasPage {
 
   }
 
+
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PreguntasPage');
+    this.getUser();
   }
+
+  getUser ()
+  {
+
+    this.userService.getUserInfo()
+      .then((response: any) => {
+
+        this.user = response;
+        console.log("el id es: "+this.user.id);
+      })
+      .catch(err => {
+
+
+      })
+  }
+
+
 
   onChangeHandler(event: string) {
    console.log('event: '+event);
@@ -84,13 +105,18 @@ export class PreguntasPage {
   }
 
  postData(){
-   var url='https://159.89.80.36/app-infomuni/guardar_respuestas.php';
-   let postData = new FormData();
 
-   postData.append('username',this.userDetails.username);
+   var url='http://localhost:8000/api/participacion_create';
+   let postData = new FormData();
+   let identificador = this.user.id;
+   console.log("el id es: "+identificador);
+   console.log("la pregunta es: "+this.hola);
+   console.log("seleccion: "+this.seleccion);
+
+   postData.append('username',identificador);
    postData.append('pregunta',this.hola);
    postData.append('respuesta_seleccionada',this.seleccion);
-   postData.append('id_encuesta',this.id);
+
 
    this.data = this.http.post(url, postData);
    this.data.subscribe(data=>{

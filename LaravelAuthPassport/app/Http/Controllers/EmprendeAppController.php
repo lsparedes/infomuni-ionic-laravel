@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Servicio;
+use DB;
 
 class EmprendeAppController extends Controller
 {
@@ -47,7 +48,8 @@ class EmprendeAppController extends Controller
      */
     public function show($id)
     {
-        //
+      $emprende_show=DB::table('servicios')->where('id','=',$id)->get();
+      return response()->json($emprende_show);
     }
 
     /**

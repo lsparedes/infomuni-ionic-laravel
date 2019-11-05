@@ -27,7 +27,7 @@ export class DetalleshomePage {
        console.log("El valor del id seleccionado es: "+this.id);
        console.log("El valor del tipo seleccionado es: "+this.tipo);
 
-       this.http.get('https://159.89.80.36/app-infomuni/detalles_home.php?id='+this.id+'&tipo='+this.tipo)
+       this.http.get('http://localhost:8000/api/detalle/'+this.id+'/'+this.tipo)
        .map(response => response.json())
        .subscribe(data =>
           {

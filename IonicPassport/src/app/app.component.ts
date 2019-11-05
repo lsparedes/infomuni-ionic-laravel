@@ -27,6 +27,7 @@ export class MyApp {
   firebase_id:string= '586230391111';
   icons: string[];
   public userDetails : any;
+  
 
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,

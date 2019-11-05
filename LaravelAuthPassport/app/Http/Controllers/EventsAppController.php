@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Evento;
+use DB;
 
 class EventsAppController extends Controller
 {
@@ -47,7 +48,8 @@ class EventsAppController extends Controller
      */
     public function show($id)
     {
-        //
+        $eventos_show=DB::table('eventos')->where('id','=',$id)->get();
+        return response()->json($eventos_show);
     }
 
     /**
