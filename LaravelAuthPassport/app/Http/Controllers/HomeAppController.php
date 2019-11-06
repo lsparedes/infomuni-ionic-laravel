@@ -48,11 +48,11 @@ class HomeAppController extends Controller
      */
     public function show($id,$tipo)
     {
-        $detalle = DB::table('home')->select('home.nombre','home.donde','home.info','home.imagen','home.tipo','det.descripcion','det.infoextra1','det.infoextra2','det.tipo')
-        ->join('detalle_home as det' ,'det.tipo','=','home.tipo')
-        ->join('detalle_home as deta','deta.id','=','home.id')
-        ->where('det.id','=',$id)
-        ->where('det.tipo','=',$tipo)->get();
+        $detalle = DB::table('home')->select('home.nombre','home.donde','home.info','home.imagen','home.tipo','detalle_home.descripcion','detalle_home.infoextra1','detalle_home.infoextra2','detalle_home.tipo')
+        ->leftJoin('detalle_home','detalle_home.id','=','home.id')
+        ->where('detalle_home.id','=',$id)
+        ->where('home.tipo','=',$tipo)
+        ->where('detalle_home.tipo','=',$tipo)->get();
         return response()->json($detalle);
     }
 

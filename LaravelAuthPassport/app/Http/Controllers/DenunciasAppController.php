@@ -11,8 +11,8 @@ use Image;
 class DenunciasAppController extends Controller
 {
   public function index(){
-    $denuncias=DB::table('denuncia')->select('denuncia.imagen','denuncia.descripcion','denuncia.created_at','tipo.nombre')
-    ->join('tipo','denuncia.tipo_id','=','tipo.id')
+    $denuncias=DB::table('denuncias')->select('denuncias.imagen','denuncias.descripcion','denuncias.created_at','tipo.nombre')
+    ->join('tipo','denuncias.tipo_id','=','tipo.id')
     ->get();
     return response()->json($denuncias);
 

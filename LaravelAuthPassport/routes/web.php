@@ -45,3 +45,5 @@ Route::get('profile/{id}', ['as'=> 'profile', 'uses' => 'UsersController@showPro
 
 Route::resource('infomapa', 'MapaController');
 
+Route::resource('denuncias', 'DenunciasController');
+Route::get('estado-denuncias/{id}','DenunciasController@estado')->name('estado_denuncia');
