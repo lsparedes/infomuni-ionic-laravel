@@ -44,5 +44,7 @@ Route::post('participacion_create', 'ParticipacionAppController@store');
 
 Route::get('todo', 'HomeAppController@index');
 Route::get('detalle/{id}/{tipo}', ['as'=> 'showdetalle', 'uses' => 'HomeAppController@show']);
+
+Route::get('mapa','MapaAppController@index');
 //Route::post('/test-post', 'TestController@test');
 //Route::post('/api-login', 'Api\AuthController@credentials2');
