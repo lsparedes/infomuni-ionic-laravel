@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
-import { Observable } from 'rxjs/Observable';
+//import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -16,6 +16,7 @@ export class InfomapaPage {
 
 
   map:any;
+  puntos:any;
   @ViewChild('map')mapElement:ElementRef;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: Http) {
@@ -27,12 +28,11 @@ export class InfomapaPage {
 
   loadMap(){
 
-    var directionsService = new google.maps.DirectionsService();
-    var directionsRenderer = new google.maps.DirectionsRenderer();
+
 
     var map = new google.maps.Map(this.mapElement.nativeElement,{
-      zoom: 14,
-      center: {lat: -36.637123, lng: -72.951153},
+      zoom: 13,
+      center: {lat: -36.786790, lng: -73.106538},
       disableDefaultUI: false,
       mapTypeControl: false,
       scaleControl: true,
@@ -42,35 +42,60 @@ export class InfomapaPage {
 
     });
 
-    // this.http.get('http://equilibratechile.com/app-nucleo/infraestructura.php', function(responsedata) {
-    //      this.each( responsedata.puntos, function(i, value) {
-    //           if(value.lat!="" && value.lng!="" )
-    //           {
-    //                var marker = new google.maps.Marker({
-    //                    position: {lat: parseFloat(value.lat), lng: parseFloat(value.lng)},
-    //                    animation: google.maps.Animation.DROP,
-    //                    title: value.DisplayName+','+ value.ChaserLocation,
-    //                    icon:  "iconos/warning.png",
-    //                    map: map
-    //                  });
-    //
-    //                  marker.addListener('click', function() {
-    //
-    //                    var infowindow = new google.maps.InfoWindow({
-    //                      content: '<div id="content">'+
-    //                                 '<div id="siteNotice">'+
-    //                                 '</div>'+
-    //                                 '<h5 id="firstHeading" class="firstHeading">'+value.texto+'</h5>'+
-    //                                 '<div id="bodyContent">'+
-    //
-    //                                 '</div>'+
-    //                               '</div>'
-    //                    });
-    //                    infowindow.open(map, marker);
-    //                  });
-    //          }
-    //       });
-    //    });
+    this.http.get('http://integralgest.cl/api/mapa')
+         .map(response => response.json())
+         .subscribe(data =>
+            {
+              this.puntos = data;
+              console.log("fuera for <br>");
+              console.log(data);
+
+              data.forEach(function(element) {
+                console.log("dentro for <br>");
+                console.log(element);
+
+                if(element.lat!="" && element.lng!="" )
+                {
+                      console.log("lat: "+element.lat+" / lng "+element.lng);
+                     var marker = new google.maps.Marker({
+                         position: {lat: parseFloat(element.lat), lng: parseFloat(element.lng)},
+                         animation: google.maps.Animation.DROP,
+                         title: element.DisplayName+','+ element.ChaserLocation,
+                         icon:  "../../assets/imgs/warning.png",
+                         map: map
+                       });
+
+                       marker.addListener('click', function() {
+
+                         var infowindow = new google.maps.InfoWindow({
+                           content: '<div id="content">'+
+                                      '<div id="siteNotice">'+
+                                      '</div>'+
+                                      '<h6 id="firstHeading" class="firstHeading">'+element.titulo+'</h6>'+
+                                      '<hr>'+
+                                      '<span><b>Horario: </b>'+element.horario+'</span><br>'+
+                                      '<span><b>Contacto: </b>'+element.contacto+'</span><br>'+
+                                      '<span><b>Sitio Web: </b>'+element.paginaweb+'</span><br>'+
+                                      '<div id="bodyContent">'+
+                                      '</div>'+
+                                    '</div>'
+                         });
+                         infowindow.open(map, marker);
+                       });
+               }
+              });
+
+
+
+
+            },
+            err => {
+              console.log("Oops!");
+              //this.presentToast("No existen registros aún");
+          }
+         );
+
+
 
     return map;
   }

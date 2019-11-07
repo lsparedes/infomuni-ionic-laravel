@@ -43,7 +43,7 @@ export class PreguntasPage {
 
 
 
-             this.http.get('http://localhost:8000/api/preguntas/'+this.id)
+             this.http.get('http://integralgest.cl/api/preguntas/'+this.id)
              .map(response => response.json())
              .subscribe(data =>
                 {
@@ -58,7 +58,7 @@ export class PreguntasPage {
                 }
              );
 
-            this.http.get('http://localhost:8000/api/respuestas/'+this.id)
+            this.http.get('http://integralgest.cl/api/respuestas/'+this.id)
            .map(response => response.json())
            .subscribe(data =>
               {

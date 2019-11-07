@@ -50,7 +50,7 @@ export class DenunciaPage {
                 // const data = JSON.parse(localStorage.getItem('userData'));
                 // this.userDetails = data.userData;
 
-                this.http.get('http://localhost:8000/api/tipo')
+                this.http.get('http://integralgest.cl/api/tipo')
                                    .map(response => response.json())
                                    .subscribe(data =>
                                       {
@@ -109,7 +109,7 @@ export class DenunciaPage {
        });
 
        this.loading.present();
-       let url= 'http://localhost:8000/api/denuncia_create';
+       let url= 'http://integralgest.cl/api/denuncia_create';
        let postData= new FormData();
 
        postData.append('file', this.base64Image);
@@ -128,7 +128,7 @@ export class DenunciaPage {
   }
 
   reload(){
-    this.http.get('http://localhost:8000/api/denuncia')
+    this.http.get('http://integralgest.cl/api/denuncia')
          .map(response => response.json())
          .subscribe(data =>
             {

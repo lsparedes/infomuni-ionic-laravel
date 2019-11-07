@@ -23,7 +23,7 @@ export class EvidenciaPage {
               public http: Http,
               private toastCtrl:ToastController) {
 
-              this.http.get('http://localhost:8000/api/denuncia')
+              this.http.get('http://integralgest.cl/api/denuncia')
                    .map(response => response.json())
                    .subscribe(data =>
                       {

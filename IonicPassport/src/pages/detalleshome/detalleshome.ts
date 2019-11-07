@@ -27,7 +27,7 @@ export class DetalleshomePage {
        console.log("El valor del id seleccionado es: "+this.id);
        console.log("El valor del tipo seleccionado es: "+this.tipo);
 
-       this.http.get('http://localhost:8000/api/detalle/'+this.id+'/'+this.tipo)
+       this.http.get('http://integralgest.cl/api/detalle/'+this.id+'/'+this.tipo)
        .map(response => response.json())
        .subscribe(data =>
           {

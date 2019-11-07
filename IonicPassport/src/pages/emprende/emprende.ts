@@ -22,7 +22,7 @@ export class EmprendePage {
               public http: Http,
               private toastCtrl:ToastController) {
 
-              this.http.get('http://localhost:8000/api/services')
+              this.http.get('http://integralgest.cl/api/services')
                    .map(response => response.json())
                    .subscribe(data =>
                       {

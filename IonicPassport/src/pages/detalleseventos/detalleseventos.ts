@@ -25,7 +25,7 @@ export class DetalleseventosPage {
 
               console.log("El valor del id seleccionado es: "+this.id);
 
-              this.http.get('http://localhost:8000/api/eventos/'+this.id)
+              this.http.get('http://integralgest.cl/api/eventos/'+this.id)
                .map(response => response.json())
                .subscribe(data =>
                   {

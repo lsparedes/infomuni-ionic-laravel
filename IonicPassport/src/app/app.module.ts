@@ -24,7 +24,7 @@ import { DetallesemprendePage } from '../pages/detallesemprende/detallesemprende
 import { DetalleshomePage } from '../pages/detalleshome/detalleshome';
 import { DenunciaPage } from '../pages/denuncia/denuncia';
 import { PreguntasPage } from '../pages/preguntas/preguntas';
-import { Preguntas2Page } from '../pages/preguntas2/preguntas2';
+
 
 import { UserProvider } from '../providers/user/user';
 
@@ -43,7 +43,7 @@ import { UserProvider } from '../providers/user/user';
     DetalleshomePage,
     DenunciaPage,
     PreguntasPage,
-    Preguntas2Page,
+    
     EvidenciaPage
 
   ],
@@ -70,7 +70,7 @@ import { UserProvider } from '../providers/user/user';
     DetalleshomePage,
     DenunciaPage,
     PreguntasPage,
-    Preguntas2Page,
+
     EvidenciaPage
 
   ],
