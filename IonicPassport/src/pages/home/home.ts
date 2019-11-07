@@ -30,7 +30,7 @@ export class HomePage {
     private toastCtrl:ToastController
   ) {
 
-    this.http.get('http://integralgest.cl/api/todo')
+    this.http.get('http://integralgest.cl/infomuni/api/todo')
                   .map(response => response.json())
                   .subscribe(data =>
                      {

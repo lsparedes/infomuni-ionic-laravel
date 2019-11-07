@@ -22,7 +22,7 @@ export class ParticipacionPage {
               public http: Http,
               private toastCtrl:ToastController) {
 
-              this.http.get('http://integralgest.cl/api/participation')
+              this.http.get('http://integralgest.cl/infomuni/api/participation')
                    .map(response => response.json())
                    .subscribe(data =>
                       {

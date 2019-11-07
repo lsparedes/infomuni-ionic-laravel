@@ -42,7 +42,7 @@ export class InfomapaPage {
 
     });
 
-    this.http.get('http://integralgest.cl/api/mapa')
+    this.http.get('http://integralgest.cl/infomuni/api/mapa')
          .map(response => response.json())
          .subscribe(data =>
             {

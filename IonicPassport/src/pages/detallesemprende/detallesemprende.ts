@@ -26,7 +26,7 @@ export class DetallesemprendePage {
               console.log("El valor del id seleccionado es: "+this.id);
 
 
-              this.http.get('http://integralgest.cl/api/emprende/'+this.id)
+              this.http.get('http://integralgest.cl/infomuni/api/emprende/'+this.id)
                  .map(response => response.json())
                  .subscribe(data =>
                     {

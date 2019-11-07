@@ -109,7 +109,7 @@ export class DenunciaPage {
        });
 
        this.loading.present();
-       let url= 'http://integralgest.cl/api/denuncia_create';
+       let url= 'http://integralgest.cl/infomuni/api/denuncia_create';
        let postData= new FormData();
 
        postData.append('file', this.base64Image);
@@ -128,7 +128,7 @@ export class DenunciaPage {
   }
 
   reload(){
-    this.http.get('http://integralgest.cl/api/denuncia')
+    this.http.get('http://integralgest.cl/infomuni/api/denuncia')
          .map(response => response.json())
          .subscribe(data =>
             {

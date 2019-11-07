@@ -43,7 +43,7 @@ export class PreguntasPage {
 
 
 
-             this.http.get('http://integralgest.cl/api/preguntas/'+this.id)
+             this.http.get('http://integralgest.cl/infomuni/api/preguntas/'+this.id)
              .map(response => response.json())
              .subscribe(data =>
                 {
@@ -58,7 +58,7 @@ export class PreguntasPage {
                 }
              );
 
-            this.http.get('http://integralgest.cl/api/respuestas/'+this.id)
+            this.http.get('http://integralgest.cl/infomuni/api/respuestas/'+this.id)
            .map(response => response.json())
            .subscribe(data =>
               {
@@ -106,7 +106,7 @@ export class PreguntasPage {
 
  postData(){
 
-   var url='http://localhost:8000/api/participacion_create';
+   var url='http://integralgest.cl/infomuni/api/participacion_create';
    let postData = new FormData();
    let identificador = this.user.id;
    console.log("el id es: "+identificador);

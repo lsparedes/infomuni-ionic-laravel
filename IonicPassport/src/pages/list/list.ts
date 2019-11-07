@@ -23,7 +23,7 @@ export class ListPage {
                 public http: Http,
                 private toastCtrl:ToastController) {
 
-                  this.http.get('http://integralgest.cl/api/events')
+                  this.http.get('http://integralgest.cl/infomuni/api/events')
                    .map(response => response.json())
                    .subscribe(
                       data =>
