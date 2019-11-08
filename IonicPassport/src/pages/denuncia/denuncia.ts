@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App,ToastController, LoadingController,Loading} from 'ionic-angular';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -8,6 +8,9 @@ import 'rxjs/add/operator/map';
 import { EvidenciaPage } from '../evidencia/evidencia';
 
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+
+import { AuthProvider } from '../../providers/auth/auth';
+import { UserProvider } from '../../providers/user/user';
 
 
 
@@ -39,8 +42,10 @@ export class DenunciaPage {
               public http: Http,
               public formBuilder: FormBuilder,
               private toastCtrl:ToastController,
-              private camera: Camera,
-              public loadingCtrl: LoadingController) {
+              public camera: Camera,
+              public loadingCtrl: LoadingController,
+              private authService: AuthProvider,
+              private userService: UserProvider) {
 
                 this.datos =  formBuilder.group({
                   comentario: ['',[Validators.required,Validators.maxLength(140)]],
@@ -50,7 +55,7 @@ export class DenunciaPage {
                 // const data = JSON.parse(localStorage.getItem('userData'));
                 // this.userDetails = data.userData;
 
-                this.http.get('http://integralgest.cl/api/tipo')
+                this.http.get('http://integralgest.cl/infomuni/api/tipo')
                                    .map(response => response.json())
                                    .subscribe(data =>
                                       {
@@ -62,6 +67,26 @@ export class DenunciaPage {
                                       }
                                   );
               }
+
+  async ionViewCanEnter () {
+      let isAuthenticated = await this.authService.checkIsAuthenticated();
+      return isAuthenticated;
+  }
+
+  getUser ()
+  {
+
+    this.userService.getUserInfo()
+      .then((response: any) => {
+
+        this.user = response;
+        console.log("el id es: "+this.user.id);
+      })
+      .catch(err => {
+
+
+      })
+  }
 
   presentToast(msg) {
     let toast = this.toastCtrl.create({
@@ -143,6 +168,9 @@ export class DenunciaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DenunciaPage');
+      this.getUser();
+  
   }
+
 
 }

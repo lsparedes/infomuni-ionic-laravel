@@ -22,7 +22,8 @@ export class HomePage {
   public userDetails : any;
   public todo:any;
 
-  constructor(public navCtrl: NavController,
+  constructor(
+    public navCtrl: NavController,
     private alertCtrl: AlertController,
     private authService: AuthProvider,
     private userService: UserProvider,

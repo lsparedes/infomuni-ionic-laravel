@@ -7,7 +7,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthProvider } from '../providers/auth/auth';
 import { IonicStorageModule } from '@ionic/storage';
-import { Camera } from '@ionic-native/camera/ngx';
+import { Camera } from '@ionic-native/camera';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -43,9 +43,7 @@ import { UserProvider } from '../providers/user/user';
     DetalleshomePage,
     DenunciaPage,
     PreguntasPage,
-    
     EvidenciaPage
-
   ],
   imports: [
     BrowserModule,
@@ -53,7 +51,8 @@ import { UserProvider } from '../providers/user/user';
     HttpClientModule,
     IonicPageModule.forChild(ListPage),
     IonicStorageModule.forRoot(),
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -71,16 +70,19 @@ import { UserProvider } from '../providers/user/user';
     DenunciaPage,
     PreguntasPage,
 
-    EvidenciaPage
+    EvidenciaPage,
+
 
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Camera,
+
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-    UserProvider
+    UserProvider,
+
   ]
 })
 export class AppModule {}
