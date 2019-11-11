@@ -10,6 +10,8 @@ import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { Refresher } from 'ionic-angular';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -87,5 +89,30 @@ export class HomePage {
   detalles(id, tipo) {
     this.navCtrl.push(DetalleshomePage,{valor: id, valor2:tipo});
   }
+
+  recargar(refresher:Refresher){
+    console.log('Inicio refresher', refresher);//mensaje
+    this.http.get('http://integralgest.cl/infomuni/api/todo')
+                  .map(response => response.json())
+                  .subscribe(data =>
+                     {
+                       this.todo = data;
+
+                       console.log(data);
+                     },
+                     err => {console.log("Oops!");
+                     this.presentToast("No existen registros aún");
+                   }
+                 );
+
+    setTimeout(() => {
+
+      console.log('Termino refresher');//mensaje
+
+
+      refresher.complete();//termino de animacion de carga
+    }, 2000);
+  }
+
 
 }

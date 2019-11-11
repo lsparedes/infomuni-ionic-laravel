@@ -30,17 +30,17 @@ class DenunciasAppController extends Controller
       $denuncia = new Denuncia;
 
       //$ruta = 'equilibratechile.com/infomuni/img/';
-      $ruta = public_path().'/img/denuncias/';
-      $imagenOriginal = $request->file('file');
-      $imagen = Image::make($imagenOriginal);
-      $temp_name = $this->random_string() . '.' . $imagenOriginal->getClientOriginalExtension();
-      //$imagen->resize(300,300);
-      $imagen->save($ruta . $temp_name, 100);
+      // $ruta = public_path().'/img/denuncias/';
+      // $imagenOriginal = $request->file('file');
+      // $imagen = Image::make($imagenOriginal);
+      // $temp_name = $this->random_string() . '.' . $imagenOriginal->getClientOriginalExtension();
+      // //$imagen->resize(300,300);
+      // $imagen->save($ruta . $temp_name, 100);
 
 
       //$servicio->nombre_emprendedor = $request->nombre_emprendedor;
       $denuncia->descripcion = $request->comentario;
-      $denuncia->imagen = $temp_name;
+      $denuncia->imagen = "hola";
       $denuncia->users_id = $request->username;
       $denuncia->tipo_id = $tipo_denuncia->id;
 

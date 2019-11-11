@@ -8,15 +8,18 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher  (ionRefresh)="recargar($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div padding style="text-align:center;">
-    <p style="font-size:1.6rem;">Para nosotros es muy importante saber tu opinión, queremos que seas partícipe de la toma de decisiones dentro de la municipalidad. <br> <br> <b>¡Selecciona la(s) encuesta/votación que desees y haznos saber lo que piensas!</b> </p>
+    <p style="font-size:1.6rem;">Para nosotros es muy importante saber tu opinión, queremos que seas partícipe de la toma de decisiones dentro de la municipalidad. <br> <br> <b>¡Selecciona la encuesta que desees y haznos saber lo que piensas!</b> </p>
   </div>
   <hr>
  <ion-list>
     <button ion-item *ngFor="let enc of encuestas" (click)="detalles(enc.id, enc.nombre)">
        <ion-icon style="color:#4C5264" name="paper" item-start></ion-icon>
        {{enc.nombre}}
-       <ion-icon style="color:#4C5264" name="arrow-forward" item-end></ion-icon>
+       <ion-icon style="color:#4C5264" name="arrow-forward" item-end ></ion-icon>
     </button>
   </ion-list>
 </ion-content>

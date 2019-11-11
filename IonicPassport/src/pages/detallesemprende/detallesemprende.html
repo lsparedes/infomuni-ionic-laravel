@@ -9,12 +9,13 @@
 
 <ion-content padding>
   <ion-card class="pin" *ngFor="let detalle of detalles" style="border-radius: 10px;padding: 5%;padding-bottom: 2%;"  >
-    <p><b>{{detalle.nombre}}</b></p>
+    <p style="font-size:18px"><b>{{detalle.nombre}}</b></p>
     <p>{{detalle.descripcion_servicio}}</p>
     <hr>
     <p>Dirección: <b>{{detalle.direccion}}</b></p>
-    <p>Horario atención:<b> Lun a Vier {{detalle.horario_apertura}} - {{detalle.horario_cierre}}</b></p>
+    <p>Horario atención:<b> {{detalle.dia_inicio}} a {{detalle.dia_termino}}, {{detalle.horario_apertura}} - {{detalle.horario_cierre}}</b></p>
     <p>Contacto: <b>{{detalle.contacto}}</b></p>
-    <hr>
+    <p>Correo: <b>{{detalle.correo}}</b></p>
+  
   </ion-card>
 </ion-content>

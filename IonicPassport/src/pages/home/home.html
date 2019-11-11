@@ -32,13 +32,20 @@
       <button ion-button menuToggle style="display:block !important">
          <ion-icon name="menu"></ion-icon>
       </button>
-      <img src="../../assets/imgs/infomuni3.png" width="25%" style="margin-left: -12%">
+      <!-- <img src="../../assets/imgs/infomuni3.png" width="25%" style="margin-left: -12%"> -->
    </ion-navbar>
 </ion-header>
 
 <ion-content padding class="fondo">
+
+  <ion-refresher  (ionRefresh)="recargar($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
   <div padding style="text-align:center;" >
-    <p style="font-size:1.6rem;"><b>¡Bienvenido!</b> <br>Aquí encontrarás todas las novedades de tu municipalidad</p>
+    <p style="font-size:1.6rem;"><b>¡Bienvenido!</b> <br>Aquí encontrarás todas las novedades de tu municipalidad.</p>
+    <img src="../../assets/imgs/hualpen.png" alt="" width="80%">
   </div>
   <hr>
    <!--<ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" placeholder="Busca aquí lo que necesites...">
@@ -47,7 +54,7 @@
      <div *ngIf="tod.tipo == 'servicios'">
         <p style="color:gray">Emprendedor</p>
         <hr>
-      <img src="{{tod.imagen}}" style="border-radius: 5px">
+      <!-- <img src="http://integralgest.cl/infomuni/img/servicios/{{tod.imagen}}" style="border-radius: 5px"> -->
         <br>
         <p style="font-size:1.6rem;"><b>{{tod.nombre}}</b></p>
         <p style="font-size:1.2rem">{{tod.donde}}</p>
@@ -58,7 +65,7 @@
      <div *ngIf="tod.tipo == 'eventos'">
         <p style="color:gray">Eventos</p>
         <hr>
-     <img src="{{tod.imagen}}" style="border-radius: 5px">
+     <img src="http://integralgest.cl/infomuni/img/eventos/{{tod.imagen}}" style="border-radius: 5px">
         <br>
         <p style="font-size:1.6rem;"><b>{{tod.nombre}}</b></p>
         <p style="font-size:1.2rem">{{tod.donde}}</p>
@@ -66,16 +73,16 @@
         <hr>
         <p class="align-bottom" style="font-size:1.2rem;text-align: end;">Saber más <ion-icon name="arrow-forward"></ion-icon></p>
      </div>
-    <div *ngIf="tod.tipo == 'denuncias'">
+    <!-- <div *ngIf="tod.tipo == 'denuncias'">
         <p style="color:gray">Denuncias</p>
         <hr>
-        <img src="{{tod.imagen}}" style="border-radius: 5px">
+        <img src="http://integralgest.cl/infomuni/img/denuncias/{{tod.imagen}}" style="border-radius: 5px">
         <br>
         <p style="font-size:1.2rem">{{tod.info}}</p>
         <p>{{tod.nombre}}</p>
 
 
-     </div>
+     </div> -->
 
 
 

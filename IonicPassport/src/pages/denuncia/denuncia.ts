@@ -129,15 +129,15 @@ export class DenunciaPage {
   }
 
   uploadImage(){
-       this.loading = this.loadingCtrl.create({
-          content: 'Subiendo...',
-       });
+       // this.loading = this.loadingCtrl.create({
+       //    content: 'Subiendo...',
+       // });
 
-       this.loading.present();
-       let url= 'http://integralgest.cl/infomuni/api/denuncia_create';
+       // this.loading.present();
+       var url= 'http://integralgest.cl/infomuni/api/denuncia_create';
        let postData= new FormData();
 
-       postData.append('file', this.base64Image);
+       //postData.append('file', this.base64Image);
        postData.append('username',this.user.id);//necesito usar el nombre de la persona logeada
        postData.append('comentario',this.comentario);
        postData.append('tipo',this.tipo);
@@ -146,30 +146,30 @@ export class DenunciaPage {
        this.data.subscribe((data) => {
          console.log(data);
          this.presentToast("Publicación realizada correctamente!");
-         this.loading.dismissAll();
-         this.reload();
+         // this.loading.dismissAll();
+         // this.reload();
          this.navCtrl.push(EvidenciaPage);
        })
   }
 
-  reload(){
-    this.http.get('http://integralgest.cl/infomuni/api/denuncia')
-         .map(response => response.json())
-         .subscribe(data =>
-            {
-              this.publicaciones = data;
-              console.log(data);
-            },
-            err => {
-              console.log("Oops!");
-            }
-        );
-  }
+  // reload(){
+  //   this.http.get('http://integralgest.cl/infomuni/api/denuncia')
+  //        .map(response => response.json())
+  //        .subscribe(data =>
+  //           {
+  //             this.publicaciones = data;
+  //             console.log(data);
+  //           },
+  //           err => {
+  //             console.log("Oops!");
+  //           }
+  //       );
+  //}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DenunciaPage');
       this.getUser();
-  
+
   }
 
 

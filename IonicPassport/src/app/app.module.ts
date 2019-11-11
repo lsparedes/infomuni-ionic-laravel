@@ -51,8 +51,7 @@ import { UserProvider } from '../providers/user/user';
     HttpClientModule,
     IonicPageModule.forChild(ListPage),
     IonicStorageModule.forRoot(),
-    IonicModule.forRoot(MyApp),
-
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -69,10 +68,7 @@ import { UserProvider } from '../providers/user/user';
     DetalleshomePage,
     DenunciaPage,
     PreguntasPage,
-
-    EvidenciaPage,
-
-
+    EvidenciaPage
   ],
   providers: [
     StatusBar,
@@ -81,8 +77,7 @@ import { UserProvider } from '../providers/user/user';
 
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-    UserProvider,
-
+    UserProvider
   ]
 })
 export class AppModule {}

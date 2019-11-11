@@ -10,15 +10,15 @@
 <ion-content padding class="fondo">
   <ion-card class="pin" *ngFor="let detalle of detalles" style="border-radius: 10px;padding: 5%;padding-bottom: 2%;">
     <img src="{{detalle.imagen}}" alt="">
-    <p><b>{{detalle.nombre}}</b></p>
+    <p style="font-size:18px"><b>{{detalle.nombre}}</b></p>
     <p>{{detalle.descripcion}}</p>
     <hr>
     <p><b>Lugar: </b>{{detalle.lugar}}</p>
     <p><b>Fecha: </b>{{detalle.fecha}}</p>
-    <hr>
+    <!-- <hr>
     <div style="text-align:center;">
       <p>Redes Sociales</p>
       <ion-icon name="logo-facebook"></ion-icon>
-    </div>
+    </div> -->
   </ion-card>
 </ion-content>

@@ -57,11 +57,21 @@ export class InfomapaPage {
                 if(element.lat!="" && element.lng!="" )
                 {
                       console.log("lat: "+element.lat+" / lng "+element.lng);
+
+                      var pinIcon = new google.maps.MarkerImage(
+                          "../../assets/imgs/"+element.tipo+".png",
+                          null, /* size is determined at runtime */
+                          null, /* origin is 0,0 */
+                          null, /* anchor is bottom center of the scaled image */
+                          new google.maps.Size(68, 68)
+                      );
+
                      var marker = new google.maps.Marker({
                          position: {lat: parseFloat(element.lat), lng: parseFloat(element.lng)},
                          animation: google.maps.Animation.DROP,
                          title: element.DisplayName+','+ element.ChaserLocation,
-                         icon:  "../../assets/imgs/warning.png",
+                         //icon:  "../../assets/imgs/warning.png",
+                         icon:  pinIcon,
                          map: map
                        });
 
@@ -69,13 +79,14 @@ export class InfomapaPage {
 
                          var infowindow = new google.maps.InfoWindow({
                            content: '<div id="content">'+
-                                      '<div id="siteNotice">'+
-                                      '</div>'+
-                                      '<h6 id="firstHeading" class="firstHeading">'+element.titulo+'</h6>'+
+
+                                      '<span style="font-size:20px"><b>'+element.titulo+'</b></span>'+
+
                                       '<hr>'+
-                                      '<span><b>Horario: </b>'+element.horario+'</span><br>'+
+                                      '<span><b>Horario: </b>'+element.dia_inicio+' a '+element.dia_termino+' , '+element.horario_apertura+' - '+element.horario_cierre+'</span><br>'+
                                       '<span><b>Contacto: </b>'+element.contacto+'</span><br>'+
                                       '<span><b>Sitio Web: </b>'+element.paginaweb+'</span><br>'+
+                                      //'<span><b>Tipo: </b>'+element.tipo+'</span><br>'+
                                       '<div id="bodyContent">'+
                                       '</div>'+
                                     '</div>'
