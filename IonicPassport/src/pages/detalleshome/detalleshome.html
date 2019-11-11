@@ -10,16 +10,17 @@
 <ion-content padding>
   <ion-card class="pin" *ngFor="let detalle of detallehome" style="border-radius: 10px;padding: 5%;padding-bottom: 2%;">
     <div *ngIf="detalle.tipo == 'servicios'">
-       <p><b>{{detalle.nombre}}</b></p>
+       <p style="font-size:18px"><b>{{detalle.nombre}}</b></p>
        <p>{{detalle.descripcion}}</p>
        <hr>
        <p><b>Dirección:</b> {{detalle.donde}}</p>
-       <p><b>Horario atención:</b> Lun a Vier {{detalle.infoextra1}} - {{detalle.infoextra2}}</p>
+       <p><b>Horario atención:</b> {{detalle.diainicio}} a {{detalle.diafinal}}, {{detalle.infoextra1}} - {{detalle.infoextra2}}</p>
        <p><b>Contacto: </b>{{detalle.info}}</p>
+       <p><b>Correo: </b>{{detalle.correo}}</p>
        <hr>
     </div>
     <div *ngIf="detalle.tipo == 'eventos'">
-      <p><b>{{detalle.nombre}}</b></p>
+      <p style="font-size:18px"><b>{{detalle.nombre}}</b></p>
       <p>{{detalle.descripcion}}</p>
       <hr>
       <p><b>Lugar:</b> {{detalle.donde}}</p>

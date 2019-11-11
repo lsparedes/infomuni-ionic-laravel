@@ -6,6 +6,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { PreguntasPage } from '../preguntas/preguntas';
 import { UserProvider } from '../../providers/user/user';
+import { Refresher } from 'ionic-angular';
 
 
 @Component({
@@ -50,7 +51,7 @@ export class ParticipacionPage {
 
 
                 })
-          
+
 
   }
 
@@ -71,5 +72,42 @@ export class ParticipacionPage {
   detalles(id, nombre) {
     this.navCtrl.push(PreguntasPage,{valor: id, valor2: nombre});
   }
+
+  recargar(refresher:Refresher){
+    console.log('Inicio refresher', refresher);//mensaje
+    this.userService.getUserInfo()
+      .then((response: any) => {
+
+        this.user = response;
+        console.log("el id es: "+this.user.id);
+        this.hola = this.user.id;
+        console.log("el valor de hola es: "+this.hola);
+        this.http.get('http://integralgest.cl/infomuni/api/participation/'+this.hola)
+             .map(response => response.json())
+             .subscribe(data =>
+                {
+                  this.encuestas = data;
+                  console.log(data);
+                },
+                err => {
+                  console.log("Oops!");
+                  this.presentToast("No existen registros aún");
+              }
+             );
+      })
+      .catch(err => {
+
+
+      })
+
+    setTimeout(() => {
+
+      console.log('Termino refresher');//mensaje
+
+
+      refresher.complete();//termino de animacion de carga
+    }, 2000);
+  }
+
 
 }

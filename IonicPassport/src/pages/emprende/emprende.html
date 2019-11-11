@@ -3,11 +3,14 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Emprende</ion-title>
+    <ion-title>Emprendedores</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher  (ionRefresh)="recargar($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div padding style="text-align:center;" >
     <p style="font-size:1.6rem;">Te presentamos el catálogo de emprendedores de la municipalidad. <br> <b>¡Los mejores productos/servicios podrás encontrarlos aquí!</b></p>
   </div>

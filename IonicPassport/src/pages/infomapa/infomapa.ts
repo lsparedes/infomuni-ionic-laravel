@@ -79,14 +79,14 @@ export class InfomapaPage {
 
                          var infowindow = new google.maps.InfoWindow({
                            content: '<div id="content">'+
-                                      '<div id="siteNotice">'+
-                                      '</div>'+
-                                      '<h6 id="firstHeading" class="firstHeading">'+element.titulo+'</h6>'+
+
+                                      '<span style="font-size:20px"><b>'+element.titulo+'</b></span>'+
+
                                       '<hr>'+
-                                      '<span><b>Horario: </b>'+element.horario+'</span><br>'+
+                                      '<span><b>Horario: </b>'+element.dia_inicio+' a '+element.dia_termino+' , '+element.horario_apertura+' - '+element.horario_cierre+'</span><br>'+
                                       '<span><b>Contacto: </b>'+element.contacto+'</span><br>'+
                                       '<span><b>Sitio Web: </b>'+element.paginaweb+'</span><br>'+
-                                      '<span><b>Tipo: </b>'+element.tipo+'</span><br>'+
+                                      //'<span><b>Tipo: </b>'+element.tipo+'</span><br>'+
                                       '<div id="bodyContent">'+
                                       '</div>'+
                                     '</div>'
