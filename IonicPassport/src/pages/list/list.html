@@ -13,9 +13,9 @@
   </div>
   <hr>
   <ion-card class="pin" *ngFor="let event of eventos" style="border-radius: 10px;padding: 5%;padding-bottom: 2%;" (click)="detalles(event.id)">
-    <img src="{{event.imagen}}" alt="">
+    <img src="http://integralgest.cl/infomuni/img/eventos/{{event.imagen}}" alt="">
     <p><b>{{event.nombre}}</b></p>
-    <hr>
+    
     <p><b>Lugar:</b> {{event.lugar}}</p>
     <p><b>Fecha:</b> {{event.fecha}} </p>
     <p class="align-bottom" style="text-align: end;">Ver más <ion-icon name="arrow-forward"></ion-icon></p>

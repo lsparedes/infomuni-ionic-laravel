@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController, MenuController,ToastController  } from 'ionic-angular';
 
 import { AuthProvider } from '../../providers/auth/auth';
 import { decodeLaravelErrors } from '../../functions/Helpers';
 import { HomePage } from '../home/home';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @IonicPage()
 @Component({
@@ -11,6 +13,8 @@ import { HomePage } from '../home/home';
   templateUrl: 'auth.html',
 })
 export class AuthPage {
+
+  public tipo:any;
 
   segment: string = "login";
   loading: any;
@@ -20,16 +24,20 @@ export class AuthPage {
   };
   formRegister: any = {
     name: '',
+    run: '',
     email: '',
     password: '',
     password_confirmation: '',
+
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
     private menuCtrl: MenuController,
-    private authService: AuthProvider
+    private authService: AuthProvider,
+    private toastCtrl:ToastController,
+      public http: Http,
   ) {
     this.loading = this.loadingCtrl.create({content: 'Please wait ...'});
   }
@@ -38,10 +46,25 @@ export class AuthPage {
     this.checkAuthenticated();
   }
 
+  presentToast(msg) {
+  let toast = this.toastCtrl.create({
+    message: msg,
+    duration: 2000,
+  //  showCloseButton: true,
+  //  closeButtonText: "Ok"
+  });
+  toast.present();
+}
+
+  validar(usuario) {
+
+  }
+
   async checkAuthenticated ()
   {
     try {
       let isAuthenticated = await this.authService.checkIsAuthenticated();
+
       if ( isAuthenticated ) {
         this.menuCtrl.enable(true);
         this.navCtrl.setRoot(HomePage);
@@ -55,15 +78,35 @@ export class AuthPage {
 
   doLogin (data: any)
   {
+    let correo = this.formLogin.email;
+    console.log(this.formLogin.email);
+    this.http.get('http://integralgest.cl/infomuni/api/users/'+correo)
+                  .map(response => response.json())
+                  .subscribe(data =>
+                     {
+                       this.tipo = data.type;
+
+                       console.log("El tipo es: "+this.tipo);
+                     },
+                     err => {console.log("Oops!");
+                     this.presentToast("No existen registros aún");
+                   }
+                 );
 
     this.loading.present();
+
+    //console.log(data);
+
     this.authService.login(data)
       .then((response: any) => {
-        this.loading.dismiss();
-        this.authService.storeCredentials(response);
-        setTimeout(() => {
-          this.checkAuthenticated()
-        }, 750);
+        if(this.tipo=='Ciudadano'){
+          this.loading.dismiss();
+          this.authService.storeCredentials(response);
+          setTimeout(() => {
+            this.checkAuthenticated()
+          }, 750);
+        }
+
       })
       .catch(err => {
         this.loading.dismiss();

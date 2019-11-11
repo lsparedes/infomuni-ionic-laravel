@@ -11,8 +11,8 @@ export const Service: any = {
      */
     passport: {
         'grant_type': 'password',
-        'client_id': '4',
-        'client_secret': 'MFINYCfOFPAKOrhst3BgxHebx8chJHYL2drqwLUj',
+        'client_id': '6',
+        'client_secret': 'pi1nlXsnYNvQhKukRJK64jQmEbzH7cVBBo2lBkFd',
     }
 
 };

@@ -8,12 +8,13 @@ import { ListPage } from '../pages/list/list';
 import { InfomapaPage } from '../pages/infomapa/infomapa';
 import { ParticipacionPage } from '../pages/participacion/participacion';
 import { EmprendePage } from '../pages/emprende/emprende';
-import { EvidenciaPage } from '../pages/evidencia/evidencia';
+//import { EvidenciaPage } from '../pages/evidencia/evidencia';
 //import { PrincipalPage } from '../pages/principal/principal';
 
 
 
 import { AuthProvider } from '../providers/auth/auth';
+import { UserProvider } from '../providers/user/user';
 
 @Component({
   templateUrl: 'app.html'
@@ -27,12 +28,14 @@ export class MyApp {
   firebase_id:string= '586230391111';
   icons: string[];
   public userDetails : any;
-  
+  user: any;
+
 
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
       private menuCtrl: MenuController,
-      private authService: AuthProvider
+      private authService: AuthProvider,
+      private userService: UserProvider
     ) {
     this.initializeApp();
 
@@ -43,8 +46,8 @@ export class MyApp {
       { title: 'Eventos', component: ListPage, icon: this.icons[1] },
       { title: 'Infomapa', component: InfomapaPage, icon: this.icons[2]},
       { title: 'Participación', component: ParticipacionPage, icon: this.icons[3]},
-      { title: 'Emprende', component: EmprendePage, icon: this.icons[4]},
-      { title: 'Evidencia', component: EvidenciaPage, icon: this.icons[5]},
+      { title: 'Emprendedores', component: EmprendePage, icon: this.icons[4]},
+      //{ title: 'Evidencia', component: EvidenciaPage, icon: this.icons[5]},
       // { title: 'Slides', component: SlidesPage }
 
     ];
@@ -66,6 +69,26 @@ export class MyApp {
       this.menuCtrl.enable(false);
       this.nav.setRoot(this.rootPage);
     }, 750)
+  }
+
+  ionViewDidLoad() {
+    this.getUser();
+  }
+
+  getUser ()
+  {
+    //this.loading = true;
+    this.userService.getUserInfo()
+      .then((response: any) => {
+        //this.loading = false;
+        this.user = response;
+        console.log("el id es: "+this.user.id);
+      })
+      .catch(err => {
+        //this.loading = false;
+      //  let alert = this.alertCtrl.create({ title: 'Error', message: 'Error on get user info', buttons: ['Ok'] });
+        //alert.present();
+      })
   }
 
   openPage(page) {
