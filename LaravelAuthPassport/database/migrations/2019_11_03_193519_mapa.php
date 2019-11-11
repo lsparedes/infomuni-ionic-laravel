@@ -15,10 +15,14 @@ class Mapa extends Migration
     {
            Schema::create('mapa', function (Blueprint $table) {
             $table->Increments('id');
-            $table->string('titulo');
-            $table->string('horario');
-            $table->string('contacto');
-            $table->string('paginaweb');
+            $table->string('titulo',70);
+            $table->string('dia_inicio', 20);
+            $table->string('dia_termino', 20);
+            $table->string('horario_apertura', 10);
+            $table->string('horario_cierre', 10);
+            $table->integer('contacto', 10);
+            $table->string('paginaweb', 70);
+            $table->enum('tipo', ['municipales', 'emergencias', 'turisticos']);
             $table->string('lat');
             $table->string('lng');
             $table->timestamps();

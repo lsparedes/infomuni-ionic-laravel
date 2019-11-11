@@ -15,10 +15,24 @@ class ParticipacionAppController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function encuestas($id)
     {
-      $encuestas = Encuesta::all();
+       
+    
+      $encuestas = DB::table('encuestas')
+                   ->join('preguntas','encuestas.id','=','preguntas.encuestas_id')
+                   ->join('respuestas','preguntas.id','=','respuestas.preguntas_id')
+                   ->where('respuestas.users_id','=',$id)
+                   ->where('estado','=','activada')->get();
+        
+
       return  response()->json($encuestas);
+    }
+    
+    public function resultados(){
+        
+        $existe = Encuesta::all();
+        return  response()->json($existe);
     }
 
     /**

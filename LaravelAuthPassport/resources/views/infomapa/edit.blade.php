@@ -1,4 +1,8 @@
 @extends('layouts.maps')
+@section('css_before')
+
+<link href="https://rawgit.com/tempusdominus/bootstrap-4/master/build/css/tempusdominus-bootstrap-4.css" rel="stylesheet"/>
+@endsection
 @section('content')
 
 <script src="{{asset('js/plugins/jquery/jquery.min.js')}}"></script>
@@ -8,7 +12,7 @@
                 <div class="bg-body-light">
                     <div class="content content-full">
                         <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-                            <h1 class="flex-sm-fill font-size-h2 font-w400 mt-2 mb-0 mb-sm-2">Nuevo lugar</h1>
+                            <h1 class="flex-sm-fill font-size-h2 font-w400 mt-2 mb-0 mb-sm-2">Editar un lugar</h1>
                          <!--   <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">Forms</li>
@@ -22,7 +26,7 @@
               <div class="content">
               <div class="block block-rounded block-bordered">
       <div class="block-header block-header-default">
-         <h3 class="block-title">Crear un nuevo lugar</h3>
+         <h3 class="block-title">Editar un nuevo lugar</h3>
            <br>
             @include('infomapa.form.info')
       </div> 
@@ -46,11 +50,230 @@
                <input type="text" name="title" class="form-control input-sm" value="{{$mapa->titulo}}">
                 
             </div>
-            <div class="form-group">
-               <label for="">Horario</label>
-               <input type="text" name="horario" class="form-control input-sm" value="{{$mapa->horario}}">
-                
-            </div>
+                     <div class="form-group row">
+                     <label for="example-password-input" class="col-lg-12">Atención</label>
+                                          <br>
+                                          <br>
+                                              <div class="col-lg-3 col-xl-3">
+                                          <span>Días</span>
+                                             
+                                          </div>
+                                              <div class="col-lg-4 col-xl-4">
+                                             @if($mapa->dia_inicio=="Lunes")
+                                              <select class="form-control" id="dias1" name="dias1">
+                                                <option value="{{$mapa->dia_inicio}}">{{$mapa->dia_inicio}}</option>
+                                                <option value="Martes">Martes</option>
+                                                <option value="Miercoles">Miercoles</option>
+                                                <option value="Jueves">Jueves</option>
+                                                <option value="Viernes">Viernes</option>
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                              @endif
+                                               @if($mapa->dia_inicio=="Martes")
+                                              <select class="form-control" id="dias1" name="dias1">
+                                                 <option value="{{$servicios->dia_inicio}}">{{$servicios->dia_inicio}}</option>
+                                                 <option value="Lunes">Lunes</option>
+                                               
+                                                <option value="Miercoles">Miercoles</option>
+                                                <option value="Jueves">Jueves</option>
+                                                <option value="Viernes">Viernes</option>
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                              @endif
+                                               @if($mapa->dia_inicio=='Miercoles')
+                                              <select class="form-control" id="dias1" name="dias1">
+                                                  <option value="{{$mapa->dia_inicio}}">{{$mapa->dia_inicio}}</option>
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                              
+                                                <option value="Jueves">Jueves</option>
+                                                <option value="Viernes">Viernes</option>
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                              @endif
+                                                 @if($mapa->dia_inicio=='Jueves')
+                                              <select class="form-control" id="dias1" name="dias1">
+                                                  <option value="{{$mapa->dia_inicio}}">{{$mapa->dia_inicio}}</option>
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                                    <option value="Miercoles">Miercoles</option>
+                                              
+                                                <option value="Viernes">Viernes</option>
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                              @endif
+                                                  @if($mapa->dia_inicio=='Viernes')
+                                              <select class="form-control" id="dias1" name="dias1">
+                                                <option value="{{$mapa->dia_inicio}}">{{$mapa->dia_inicio}}</option>  
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                                    <option value="Miercoles">Miercoles</option>
+                                                    <option value="Jueves">Jueves</option>
+                                                                                            
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                              @endif
+                                                     @if($mapa->dia_inicio=='Sabado')
+                                              <select class="form-control" id="dias1" name="dias1">
+                                                <option value="{{$mapa->dia_inicio}}">{{$mapa->dia_inicio}}</option> 
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                                    <option value="Miercoles">Miercoles</option>
+                                                    <option value="Jueves">Jueves</option>
+                                                    <option value="Viernes">Viernes</option>
+                                                                                             
+                                                
+                                                
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                              @endif
+                                              @if($mapa->dia_inicio=='Domingo')
+                                              <select class="form-control" id="dias1" name="dias1">
+                                                <option value="{{$mapa->dia_inicio}}">{{$mapa->dia_inicio}}</option>          
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                                    <option value="Miercoles">Miercoles</option>
+                                                    <option value="Jueves">Jueves</option>
+                                                    <option value="Viernes">Viernes</option>      
+                                                <option value="Sabado">Sabado</option>
+                                                                                    
+                                                
+                                              
+                                              </select>
+                                              @endif
+                                          </div>
+                                          <div class="col-lg-1 col-xl-1">
+                                              <span>a</span>
+                                          </div>
+                                           <div class="col-lg-4 col-xl-4">
+                                                @if($mapa->dia_termino=='Lunes')
+                                              <select class="form-control" id="dias2" name="dias2">
+                                                <option value="{{$mapa->dia_termino}}">{{$mapa->dia_termino}}</option>
+                                                <option value="Martes">Martes</option>
+                                                <option value="Miercoles">Miercoles</option>
+                                                <option value="Jueves">Jueves</option>
+                                                <option value="Viernes">Viernes</option>
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                              
+                                               @elseif($mapa->dia_termino=='Martes')
+                                              <select class="form-control" id="dias2" name="dias2">
+                                                <option value="{{$mapa->dia_termino}}">{{$mapa->dia_termino}}</option>
+                                                 <option value="Lunes">Lunes</option>
+                                                
+                                                <option value="Miercoles">Miercoles</option>
+                                                <option value="Jueves">Jueves</option>
+                                                <option value="Viernes">Viernes</option>
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                              
+                                               @elseif($mapa->dia_termino=='Miercoles')
+                                              <select class="form-control" id="dias2" name="dias2">
+                                                    <option value="{{$mapa->dia_termino}}">{{$mapa->dia_termino}}</option>
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                            
+                                                <option value="Jueves">Jueves</option>
+                                                <option value="Viernes">Viernes</option>
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                            
+                                                 @elseif($mapa->dia_termino=='Jueves')
+                                              <select class="form-control" id="dias2" name="dias2">
+                                                  <option value="{{$mapa->dia_termino}}">{{$mapa->dia_termino}}</option>
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                                    <option value="Miercoles">Miercoles</option>
+                                              
+                                                <option value="Viernes">Viernes</option>
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                           
+                                                  @elseif($mapa->dia_termino=='Viernes')
+                                              <select class="form-control" id="dias2" name="dias2">
+                                                 <option value="{{$mapa->dia_termino}}">{{$mapa->dia_termino}}</option>  
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                                    <option value="Miercoles">Miercoles</option>
+                                                    <option value="Jueves">Jueves</option>
+                                                                                           
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                             
+                                                     @elseif($mapa->dia_termino=='Sabado')
+                                              <select class="form-control" id="dias2" name="dias2">
+                                                  <option value="{{$mapa->dia_termino}}">{{$mapa->dia_termino}}</option> 
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                                    <option value="Miercoles">Miercoles</option>
+                                                    <option value="Jueves">Jueves</option>
+                                                    <option value="Viernes">Viernes</option>
+                                                                                           
+                                                
+                                                
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                              
+                                              @elseif($mapa->dia_termino=='Domingo')
+                                              <select class="form-control" id="dias2" name="dias2">
+                                                  <option value="{{$mapa->dia_termino}}">{{$mapa->dia_termino}}</option>                                              
+                                                
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                                    <option value="Miercoles">Miercoles</option>
+                                                    <option value="Jueves">Jueves</option>
+                                                    <option value="Viernes">Viernes</option>      
+                                                <option value="Sabado">Sabado</option>
+                                              
+                                              
+                                              </select>
+                                              @endif
+                                          </div>
+                                           <div class="col-lg-3 col-xl-3">
+                                           <br>
+                                           
+                                          <span>Horario</span>
+                                             
+                                          </div>
+                                          <div class="col-lg-4 col-xl-4">
+                                                 <br>
+                                     
+                                                  <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+                                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker3" value="{{$mapa->horario_apertura}}" autocomplete="off" name="horarioapertura"/>
+                                                    <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                                    </div>
+                                                </div>
+                                          </div>
+                                          <div class="col-lg-1 col-xl-1">
+                                              <br>
+                                              <span>a</span>
+                                          </div>
+                                        <div class="col-lg-4 col-xl-4">
+                                              <br>
+                                                <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2" value="{{$mapa->horario_cierre}}" autocomplete="off" name="horariocierre"/>
+                                                    <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                                    </div>
+                                                    
+                                        
+                                          </div>
+                                           
+                                         
+                                        </div>
+                                        </div>
+          
             <div class="form-group">
                <label for="">Contacto</label>
                <input type="text" name="contacto" class="form-control input-sm" value="{{$mapa->contacto}}">
@@ -61,7 +284,37 @@
                <input type="text" name="paginaweb" class="form-control input-sm" value="{{$mapa->paginaweb}}">
                 
             </div>
-            
+            <div class="form-group">
+                <label for="">Tipo</label>
+                  @if($mapa->tipo=="municipales")
+                <select class="form-control" id="tipo" name="tipo">
+                 
+                    <option value="{{$mapa->tipo}}">{{$mapa->tipo}}</option>
+                    <option value="emergencias">servicios de emergencias</option>
+                    <option value="turisticos">lugares turisticos</option>
+                   
+                </select>
+                @endif
+                  @if($mapa->tipo=="emergencias")
+                <select class="form-control" id="tipo" name="tipo">
+                 
+                    <option value="{{$mapa->tipo}}">{{$mapa->tipo}}</option>
+                    <option value="municipales">servicios municipales</option>
+                    <option value="turisticos">lugares turisticos</option>
+                   
+                </select>
+                @endif
+                   @if($mapa->tipo=="turisticos")
+                <select class="form-control" id="tipo" name="tipo">
+                 
+                    <option value="{{$mapa->tipo}}">{{$mapa->tipo}}</option>
+                     <option value="emergencias">servicios de emergencias</option>
+                    <option value="municipales">servicios municipales</option>
+                   
+                   
+                </select>
+                @endif
+            </div>
             <div class="form-group">
                <label for="">Buscar lugar</label>
                <input type="text" class="form-control input-sm" id="searchmap">
@@ -93,6 +346,9 @@
 
 @endsection
 @section('js_after')
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+ <script src="https://rawgit.com/tempusdominus/bootstrap-4/master/build/js/tempusdominus-bootstrap-4.js"></script>
    
    <script>
 
@@ -143,6 +399,27 @@
     initMap4()
 }
 
+</script>
+ <script type="text/javascript">
+           $(function () {
+                $('#datetimepicker3').datetimepicker({
+                    format: 'LT',
+                    locale: 'es',
+                    sideBySide: true
+                });
+            });
+  
+        </script>
+        
+    <script>
+
+      $(function () {
+                $('#datetimepicker2').datetimepicker({
+                    format: 'LT',
+                    locale: 'es',
+                    sideBySide: true
+                });
+            });
 </script>
 
 @endsection

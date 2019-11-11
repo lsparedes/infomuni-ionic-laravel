@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('bandera',['true','false'])->default('false');
-            $table->enum('tipo_usuario',['admin','ciudadano'])->default('ciudadano');
+            $table->enum('type',['Admin','Ciudadano'])->default('ciudadano');
             $table->rememberToken();
             $table->timestamps();
         });

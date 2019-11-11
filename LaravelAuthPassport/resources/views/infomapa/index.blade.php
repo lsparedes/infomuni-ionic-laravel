@@ -39,6 +39,7 @@
                                         <th>Horario</th>
                                         <th>Contacto</th>
                                         <th>Página web</th>
+                                        <th>Tipo</th>
                                         <th>Opciones</th>
                                     </tr>
                                 </thead>
@@ -47,9 +48,10 @@
                                 <tr>
                                    <td>{{$map->id}}</td>
                                     <td>{{$map->titulo}}</td>
-                                    <td>{{$map->horario}}</td>
+                                   <td>{{$map->dia_inicio}} a {{$map->dia_termino}}, {{$map->horario_apertura}} - {{$map->horario_cierre}}</td>
                                     <td>{{$map->contacto}}</td>
                                     <td>{{$map->paginaweb}}</td>
+                                    <td>{{$map->tipo}}</td>
                                     <td><div class="dropdown">
                                         <a role="button" class="btn dropdown-toggle" id="dropdown-default-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fa fa-fw fa-bars text-primary"></i>  

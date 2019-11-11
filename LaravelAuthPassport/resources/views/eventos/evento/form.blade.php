@@ -1,4 +1,8 @@
 @extends('layouts.backend')
+@section('css_before')
+
+<link href="https://rawgit.com/tempusdominus/bootstrap-4/master/build/css/tempusdominus-bootstrap-4.css" rel="stylesheet"/>
+@endsection
 @section('content')
        <!-- Hero -->
                 <div class="bg-body-light">
@@ -61,10 +65,12 @@
                                             <label for="example-email-input">Lugar</label>
                                             <input type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar">
                                         </div>
-                                        <div class="form-group">
+                                           <div class="form-group">
                                             <label for="example-password-input">Fecha</label>
+                                             
                                             <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Fecha">
                                         </div>
+                                    
                                    
                                         <div class="form-group">
                                             <label for="example-textarea-input">Descripción</label>
@@ -83,5 +89,28 @@
                             </form>
                         </div>
                     </div>
+
+@endsection
+@section('js_after') 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+ <script src="https://rawgit.com/tempusdominus/bootstrap-4/master/build/js/tempusdominus-bootstrap-4.js"></script>
+ <script type="text/javascript">
+     
+       $(function () {
+                $('#datetimepicker2').datetimepicker({
+                    format: 'L',
+                    locale: 'es'
+                });
+            });
+            $(function () {
+                $('#datetimepicker1').datetimepicker({
+                    format: 'LT',
+                    locale: 'es',
+                    sideBySide: true
+                });
+            });
+        </script>
+  
 
 @endsection

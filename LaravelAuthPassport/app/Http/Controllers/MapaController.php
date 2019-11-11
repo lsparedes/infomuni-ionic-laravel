@@ -39,9 +39,13 @@ class MapaController extends Controller
     {
         $mapa = new Mapa;
         $mapa->titulo = $request->title;
-        $mapa->horario = $request->horario;
+        $mapa->horario_apertura = $request->horarioapertura;
+        $mapa->horario_cierre = $request->horariocierre;
+        $mapa->dia_inicio = $request->dias1;
+        $mapa->dia_termino = $request->dias2;
         $mapa->contacto = $request->contacto;
         $mapa->paginaweb = $request->paginaweb;
+        $mapa->tipo = $request->tipo;
         $mapa->lat = $request->lat;
         $mapa->lng = $request->lng;
         $mapa->save();
@@ -87,9 +91,13 @@ class MapaController extends Controller
     {
         $mapa = Mapa::find($id);
         $mapa->titulo = $request->title;
-        $mapa->horario = $request->horario;
+        $mapa->horario_apertura = $request->horarioapertura;
+        $mapa->horario_cierre = $request->horariocierre;
+        $mapa->dia_inicio = $request->dias1;
+        $mapa->dia_termino = $request->dias2;
         $mapa->contacto = $request->contacto;
         $mapa->paginaweb = $request->paginaweb;
+        $mapa->tipo = $request->tipo;
         $mapa->lat = $request->lat;
         $mapa->lng = $request->lng;
         $mapa->save();

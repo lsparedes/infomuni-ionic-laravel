@@ -31,6 +31,7 @@ class ControllerCalendar extends Controller
         'nombre'       => $request->input("titulo"),
         'lugar'  => $request->input("lugar"),
         'fecha'        => $request->input("fecha"),
+        //'hora' => $request->input("hora"),
         'descripcion'        => $request->input("descripcion"),
         'imagen'  => $temp_name,
         'users_id' => auth()->id(),
@@ -239,6 +240,7 @@ class ControllerCalendar extends Controller
             $eventos->nombre = $request->titulo;
             $eventos->lugar = $request->lugar;
             $eventos->fecha = $request->fecha;
+            //$eventos->hora = $request->$hora;
             $eventos->descripcion = $request->descripcion;
             $eventos->users_id = auth()->id();
             $eventos->save();
@@ -254,6 +256,7 @@ class ControllerCalendar extends Controller
             $eventos->nombre = $request->titulo;
             $eventos->lugar = $request->lugar;
             $eventos->fecha = $request->fecha;
+            //$eventos->hora = $request->$hora;
             $eventos->descripcion = $request->descripcion;
             $eventos->imagen = $temp_name;
             $eventos->users_id = auth()->id();

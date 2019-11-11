@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::resource('emprende', 'EmprendedorController');
+Route::resource('/emprende', 'EmprendedorController');
 Route::get('/listaemprende', 'EmprendedorController@create')->name('listaemprende');
 Route::get('listaemprende/{id}', ['as'=> 'showemprende', 'uses' => 'EmprendedorController@show']);
 Route::post('import-list-excel', 'EmprendedorController@importExcel')->name('emprende.import.excel');

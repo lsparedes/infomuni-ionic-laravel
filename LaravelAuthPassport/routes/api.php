@@ -28,8 +28,9 @@ Route::post('register', 'Api\RegisterController@register');
 
 Route::resource('/events', 'EventsAppController');
 Route::resource('/services', 'EmprendeAppController');
-Route::resource('/participation', 'ParticipacionAppController');
 
+Route::get('participationexiste', 'ParticipacionAppController@resultados');
+Route::get('participation/{id}', ['as'=> 'showencuestas', 'uses' => 'ParticipacionAppController@encuestas']);
 Route::get('preguntas/{id}', ['as'=> 'showpreguntas', 'uses' => 'ParticipacionAppController@show']);
 Route::get('respuestas/{id}', ['as'=> 'showrespuestas', 'uses' => 'ParticipacionAppController@show2']);
 
@@ -46,5 +47,6 @@ Route::get('todo', 'HomeAppController@index');
 Route::get('detalle/{id}/{tipo}', ['as'=> 'showdetalle', 'uses' => 'HomeAppController@show']);
 
 Route::get('mapa','MapaAppController@index');
+Route::get('users/{email}','UserAppController@users');
 //Route::post('/test-post', 'TestController@test');
 //Route::post('/api-login', 'Api\AuthController@credentials2');

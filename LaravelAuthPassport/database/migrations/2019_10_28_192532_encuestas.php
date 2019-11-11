@@ -16,7 +16,7 @@ class Encuestas extends Migration
         Schema::create('encuestas', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('nombre', 70);
-            $table->enum('estado', ['activada', 'desactivada'])->default('activada');;
+            $table->enum('estado', ['activada', 'desactivada'])->default('activada');
             $table->integer('users_id')->unsigned();
             $table->timestamps();
                 

@@ -1,4 +1,8 @@
 @extends('layouts.maps')
+@section('css_before')
+
+<link href="https://rawgit.com/tempusdominus/bootstrap-4/master/build/css/tempusdominus-bootstrap-4.css" rel="stylesheet"/>
+@endsection
 @section('content')
 
 <script src="{{asset('js/plugins/jquery/jquery.min.js')}}"></script>
@@ -42,23 +46,124 @@
        
             <div class="form-group">
                <label for="">Nombre</label>
-               <input type="text" name="title" class="form-control input-sm">
+               <input type="text" name="title" class="form-control input-sm" placeholder="Nombre lugar">
                 
             </div>
-            <div class="form-group">
-               <label for="">Horario</label>
-               <input type="text" name="horario" class="form-control input-sm">
+                        <div class="form-group row">
+                                          <label for="example-password-input" class="col-lg-12">Atención</label>
+                                          <br>
+                                          <br>
+                                          <div class="col-lg-3 col-xl-3">
+                                          <span>Días</span>
+                                             
+                                          </div>
+                                          <div class="col-lg-4 col-xl-4">
+                                              <select class="form-control" id="dias1" name="dias1">
+                                                <option>Seleccionar</option>
+                                                <option value="Lunes">Lunes</option>
+                                                <option value="Martes">Martes</option>
+                                                <option value="Miercoles">Miercoles</option>
+                                                <option value="Jueves">Jueves</option>
+                                                <option value="Viernes">Viernes</option>
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                          </div>
+                                          <div class="col-lg-1 col-xl-1">
+                                              <span>a</span>
+                                          </div>
+                                           <div class="col-lg-4 col-xl-4">
+                                               <select class="form-control" id="dias2" name="dias2">
+                                                <option>Seleccionar</option>
+                                                <option value="Lunes">Lunes</option>
+                                                <option value="Martes">Martes</option>
+                                                <option value="Miercoles">Miercoles</option>
+                                                <option value="Jueves">Jueves</option>
+                                                <option value="Viernes">Viernes</option>
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                          </div>
+                                           <div class="col-lg-3 col-xl-3">
+                                           <br>
+                                           
+                                          <span>Horario</span>
+                                             
+                                          </div>
+                                          <div class="col-lg-4 col-xl-4">
+                                                 <br>
+                                                 <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+                                                       <input type="text" class="form-control datetimepicker-input" id="datetimepicker3" name="horarioapertura" data-toggle="datetimepicker" data-target="#datetimepicker3" placeholder="Apertura" autocomplete="off"/>
+                                                    <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                                    </div>
+                                                </div>
+                                             
+                                          </div>
+                                          <div class="col-lg-1 col-xl-1">
+                                              <br>
+                                              <span>a</span>
+                                          </div>
+                                        <div class="col-lg-4 col-xl-4">
+                                              <br>
+                                                  <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+                                                       <input type="text" class="form-control datetimepicker-input" id="datetimepicker2" name="horariocierre" data-toggle="datetimepicker" data-target="#datetimepicker2" placeholder="Cierre" autocomplete="off"/>
+                                                    <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                                    </div>
+                                                </div>
+                                            
+                                          </div>
+                                           
+                                            <!--<div class="col-lg-12 col-xl-12">
+                                         <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker3" id="horarioapertura" name="horarioapertura" placeholder="Horario apertura" >
+                                        <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                        </div>
+                                        </div>
+                                              </div>--> 
+                                      <!--      <label for="example-password-input" class="col-lg-8">Horario apertura</label>
+                                            <div class="col-lg-8 col-xl-7">
+                                            <input type="number" class="form-control" id="horarioapertura" name="horarioapertura" placeholder="Horario apertura">
+                                            </div>
+                                            <div class="col-lg-8 col-xl-5">
+                                                <select class="form-control" id="tipohorario" name="tipohorario">
+                                                <option>Seleccionar</option>
+                                                <option value="Am">Am</option>
+                                                <option value="Pm">Pm</option>
+                                               
+                                            </select>
+                                            </div>-->
+                                        </div>
+   <!--         <div class="form-group">
+               <label for="example-password-input">Horario apertura</label>
+               <input type="text" class="form-control datetimepicker-input" id="datetimepicker3" name="horarioapertura" data-toggle="datetimepicker" data-target="#datetimepicker3" placeholder="Horario apertura" autocomplete="off"/>
                 
             </div>
+             <div class="form-group">
+            <label for="example-password-input">Horario cierre</label>
+            <input type="text" class="form-control datetimepicker-input" id="datetimepicker2" name="horariocierre" data-toggle="datetimepicker" data-target="#datetimepicker2" placeholder="Horario cierre" autocomplete="off"/>
+          </div>-->
             <div class="form-group">
                <label for="">Contacto</label>
-               <input type="text" name="contacto" class="form-control input-sm">
+               <input type="text" name="contacto" class="form-control input-sm" placeholder="Número de contacto">
                 
             </div>
             <div class="form-group">
                <label for="">Pagina web</label>
-               <input type="text" name="paginaweb" class="form-control input-sm">
+               <input type="text" name="paginaweb" class="form-control input-sm" placeholder="Página web">
                 
+            </div>
+            <div class="form-group">
+                <label for="">Tipo</label>
+                <select class="form-control" id="tipo" name="tipo">
+                    <option>Seleccionar</option>
+                    <option value="municipales">Servicios municipales</option>
+                    <option value="emergencias">Servicios de emergencias</option>
+                    <option value="turisticos">Lugares turisticos</option>
+                   
+                </select>
             </div>
             
             <div class="form-group">
@@ -92,7 +197,9 @@
 
 @endsection
 @section('js_after')
-   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+ <script src="https://rawgit.com/tempusdominus/bootstrap-4/master/build/js/tempusdominus-bootstrap-4.js"></script>
    <script>
 
        function initMap4() {
@@ -143,5 +250,29 @@
 }
 
 </script>
+ <script type="text/javascript">
+           $(function () {
+                $('#datetimepicker3').datetimepicker({
+                    format: 'LT',
+                    locale: 'es',
+                    sideBySide: true
+                });
+            });
+  
+        </script>
+        
+    <script>
+
+      $(function () {
+                $('#datetimepicker2').datetimepicker({
+                    format: 'LT',
+                    locale: 'es',
+                    sideBySide: true
+                });
+            });
+</script>
 
 @endsection
+
+
+        
