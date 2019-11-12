@@ -1,8 +1,8 @@
 {
-  "name": "IonicPassport",
+  "name": "InfoMuni Hualpén",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "DRUP SpA",
+  "homepage": "http://integralgest.cl",
   "private": true,
   "scripts": {
     "start": "ionic-app-scripts serve",
