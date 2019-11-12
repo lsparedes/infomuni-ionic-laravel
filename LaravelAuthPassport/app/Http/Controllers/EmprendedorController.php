@@ -40,7 +40,8 @@ class EmprendedorController extends Controller
      */
     public function store(Request $request)
     {
-    
+
+        
         $servicio = new Servicio;
         
         //$ruta = 'equilibratechile.com/infomuni/img/';
@@ -52,12 +53,15 @@ class EmprendedorController extends Controller
         //$imagen->save($ruta . $temp_name, 100);
         
         //$servicio->nombre_emprendedor = $request->nombre_emprendedor;
-        $servicio->nombre = $request->nombre_servicio;
+        $servicio->nombre = $request->nombre;
         $servicio->direccion = $request->direccion;
         $servicio->contacto = $request->contacto;
-        $servicio->descripcion_servicio = $request->descripcion;
-        $servicio->horario_apertura = $request->horarioapertura.' '.$request->tipohorario;
-        $servicio->horario_cierre = $request->horariocierre.' '.$request->tipohorario2;
+        $servicio->correo = $request->correo;
+        $servicio->descripcion_servicio = $request->descripcion_servicio;
+        $servicio->horario_apertura = $request->horario_apertura;
+        $servicio->horario_cierre = $request->horario_cierre;
+        $servicio->dia_inicio = $request->dia_inicio;
+        $servicio->dia_termino = $request->dia_termino;
         $servicio->imagen = 'no existe';
         //$servicio->imagen = $request->file('image')->store('servicios');
         $servicio->users_id = auth()->id();
@@ -111,16 +115,16 @@ class EmprendedorController extends Controller
     {
         $servicios = Servicio::find($id);
         
-        $horarioa = explode(' ', $servicios->horario_apertura, 2);
+        /*$horarioa = explode(' ', $servicios->horario_apertura, 2);
         $horarioa1 = $horarioa[0];
         $horarioa2 = $horarioa[1];
         
         $horarioc = explode(' ', $servicios->horario_cierre, 2);
         $horarioc1 = $horarioc[0];
-        $horarioc2 = $horarioc[1];
+        $horarioc2 = $horarioc[1];*/
         
         //dd($horarioa1,"/",$horarioa2);
-        return view('emprende.edit', compact('servicios','horarioa1','horarioa2','horarioc1','horarioc2'));
+        return view('emprende.edit', compact('servicios'));
     }
 
     /**
@@ -133,12 +137,15 @@ class EmprendedorController extends Controller
     public function update(Request $request, $id)
     {
         $servicio = Servicio::find($id);
-        $servicio->nombre = $request->nombre_servicio;
+        $servicio->nombre = $request->nombre;
         $servicio->direccion = $request->direccion;
         $servicio->contacto = $request->contacto;
-        $servicio->descripcion_servicio = $request->descripcion;
-        $servicio->horario_apertura = $request->horarioapertura.' '.$request->tipohorario;
-        $servicio->horario_cierre = $request->horariocierre.' '.$request->tipohorario2;
+        $servicio->correo = $request->correo;
+        $servicio->descripcion_servicio = $request->descripcion_servicio;
+        $servicio->horario_apertura = $request->horario_apertura;
+        $servicio->horario_cierre = $request->horario_cierre;
+        $servicio->dia_inicio = $request->dia_inicio;
+        $servicio->dia_termino = $request->dia_termino;
         $servicio->imagen = 'no existe';
         $servicio->users_id = auth()->id();
         $servicio->save();

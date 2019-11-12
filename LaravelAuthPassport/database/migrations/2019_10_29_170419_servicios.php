@@ -19,6 +19,9 @@ class Servicios extends Migration
             $table->string('nombre', 70);
             $table->string('direccion', 70);
             $table->string('contacto', 15);
+            $table->string('email',70);
+            $table->string('dia_inicio', 20);
+            $table->string('dia_termino', 20);
             $table->string('horario_apertura', 10);
             $table->string('horario_cierre', 10);
             $table->longText('descripcion_servicio');

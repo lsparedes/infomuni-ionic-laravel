@@ -1,4 +1,8 @@
 @extends('layouts.backend')
+@section('css_before')
+
+<link href="https://rawgit.com/tempusdominus/bootstrap-4/master/build/css/tempusdominus-bootstrap-4.css" rel="stylesheet"/>
+@endsection
 @section('content')
 
                 <!-- Hero -->
@@ -55,7 +59,7 @@
                                     <div class="col-lg-8 col-xl-5">
                                         <div class="form-group">
                                             <label for="example-text-input">Nombre servicio</label>
-                                            <input type="text" class="form-control" id="nombre_servicio" name="nombre_servicio" placeholder="Nombre servicio" value="{{$servicios->nombre}}">
+                                            <input type="text" class="form-control" id="nombre_servicio" name="nombre" placeholder="Nombre servicio" value="{{$servicios->nombre}}">
                                         </div>
                                         <div class="form-group">
                                             <label for="example-email-input">Dirección</label>
@@ -65,47 +69,238 @@
                                             <label for="example-password-input">Contacto</label>
                                             <input type="text" class="form-control" id="contacto" name="contacto" placeholder="Contacto" value="{{$servicios->contacto}}">
                                         </div>
-                                          <div class="form-group row">
-                                            <label for="example-password-input" class="col-lg-8">Horario apertura</label>
-                                            <div class="col-lg-8 col-xl-7">
-                                            <input type="number" class="form-control" id="horarioapertura" name="horarioapertura" placeholder="Horario apertura" value="{{$horarioa1}}">
-                                            </div>
-                                            <div class="col-lg-8 col-xl-5">
-                                                <select class="form-control" id="tipohorario" name="tipohorario">
-                                                @if($horarioa2=='Am')
-                                                <option value="Am">{{$horarioa2}}</option>
-                                                <option value="Pm">Pm</option>
-                                                @endif
-                                                @if($horarioa2=='Pm')
-                                                <option value="Am">Am</option>
-                                                <option value="Pm">{{$horarioa2}}</option>
-                                                @endif
-                                            </select>
-                                            </div>
+                                            <div class="form-group">
+                                            <label for="example-password-input">Correo</label>
+                                            <input type="email" class="form-control" id="correo" name="correo" value="{{$servicios->correo}}">
                                         </div>
-                                            <div class="form-group row">
-                                            <label for="example-password-input" class="col-lg-8">Horario cierre</label>
-                                            <div class="col-lg-8 col-xl-7">
-                                            <input type="number" class="form-control" id="horariocierre" name="horariocierre" placeholder="Horario cierre" value="{{$horarioc1}}">
-                                            </div>
-                                            <div class="col-lg-8 col-xl-5">
-                                                <select class="form-control" id="tipohorario2" name="tipohorario2">
-                                                @if($horarioc2=='Am')
-                                                <option value="Am">{{$horarioc2}}</option>
-                                                <option value="Pm">Pm</option>
-                                                @endif
-                                                @if($horarioc2=='Pm')
-                                                <option value="Pm">{{$horarioc2}}</option>
-                                                <option value="Am">Am</option>
-                                                
-                                                @endif
+                                                 <div class="form-group row">
+                                          <label for="example-password-input" class="col-lg-12">Atención</label>
+                                          <br>
+                                          <br>
+                                          <div class="col-lg-3 col-xl-3">
+                                          <span>Días</span>
+                                             
+                                          </div>
+                                          <div class="col-lg-4 col-xl-4">
+                                             @if($servicios->dia_inicio=="Lunes")
+                                              <select class="form-control" id="dia_inicio" name="dia_inicio">
+                                                <option value="{{$servicios->dia_inicio}}">{{$servicios->dia_inicio}}</option>
+                                                <option value="Martes">Martes</option>
+                                                <option value="Miercoles">Miercoles</option>
+                                                <option value="Jueves">Jueves</option>
+                                                <option value="Viernes">Viernes</option>
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                              @endif
+                                               @if($servicios->dia_inicio=="Martes")
+                                              <select class="form-control" id="dia_inicio" name="dia_inicio">
+                                                 <option value="{{$servicios->dia_inicio}}">{{$servicios->dia_inicio}}</option>
+                                                 <option value="Lunes">Lunes</option>
                                                
-                                            </select>
-                                            </div>
+                                                <option value="Miercoles">Miercoles</option>
+                                                <option value="Jueves">Jueves</option>
+                                                <option value="Viernes">Viernes</option>
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                              @endif
+                                               @if($servicios->dia_inicio=='Miercoles')
+                                              <select class="form-control" id="dia_inicio" name="dia_inicio">
+                                                  <option value="{{$servicios->dia_inicio}}">{{$servicios->dia_inicio}}</option>
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                              
+                                                <option value="Jueves">Jueves</option>
+                                                <option value="Viernes">Viernes</option>
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                              @endif
+                                                 @if($servicios->dia_inicio=='Jueves')
+                                              <select class="form-control" id="dia_inicio" name="dia_inicio">
+                                                  <option value="{{$servicios->dia_inicio}}">{{$servicios->dia_inicio}}</option>
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                                    <option value="Miercoles">Miercoles</option>
+                                              
+                                                <option value="Viernes">Viernes</option>
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                              @endif
+                                                  @if($servicios->dia_inicio=='Viernes')
+                                              <select class="form-control" id="dia_inicio" name="dia_inicio">
+                                                <option value="{{$servicios->dia_inicio}}">{{$servicios->dia_inicio}}</option>  
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                                    <option value="Miercoles">Miercoles</option>
+                                                    <option value="Jueves">Jueves</option>
+                                                                                            
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                              @endif
+                                                     @if($servicios->dia_inicio=='Sabado')
+                                              <select class="form-control" id="dia_inicio" name="dia_inicio">
+                                                <option value="{{$servicios->dia_inicio}}">{{$servicios->dia_inicio}}</option> 
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                                    <option value="Miercoles">Miercoles</option>
+                                                    <option value="Jueves">Jueves</option>
+                                                    <option value="Viernes">Viernes</option>
+                                                                                             
+                                                
+                                                
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                              @endif
+                                              @if($servicios->dia_inicio=='Domingo')
+                                              <select class="form-control" id="dia_inicio" name="dia_inicio">
+                                                <option value="{{$servicios->dia_inicio}}">{{$servicios->dia_inicio}}</option>          
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                                    <option value="Miercoles">Miercoles</option>
+                                                    <option value="Jueves">Jueves</option>
+                                                    <option value="Viernes">Viernes</option>      
+                                                <option value="Sabado">Sabado</option>
+                                                                                    
+                                                
+                                              
+                                              </select>
+                                              @endif
+                                          </div>
+                                          <div class="col-lg-1 col-xl-1">
+                                              <span>a</span>
+                                          </div>
+                                           <div class="col-lg-4 col-xl-4">
+                                                @if($servicios->dia_termino=='Lunes')
+                                              <select class="form-control" id="dia_termino" name="dia_termino">
+                                                <option value="{{$servicios->dia_termino}}">{{$servicios->dia_termino}}</option>
+                                                <option value="Martes">Martes</option>
+                                                <option value="Miercoles">Miercoles</option>
+                                                <option value="Jueves">Jueves</option>
+                                                <option value="Viernes">Viernes</option>
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                              
+                                               @elseif($servicios->dia_termino=='Martes')
+                                              <select class="form-control" id="dia_termino" name="dia_termino">
+                                                <option value="{{$servicios->dia_termino}}">{{$servicios->dia_termino}}</option>
+                                                 <option value="Lunes">Lunes</option>
+                                                
+                                                <option value="Miercoles">Miercoles</option>
+                                                <option value="Jueves">Jueves</option>
+                                                <option value="Viernes">Viernes</option>
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                              
+                                               @elseif($servicios->dia_termino=='Miercoles')
+                                              <select class="form-control" id="dia_termino" name="dia_termino">
+                                                    <option value="{{$servicios->dia_termino}}">{{$servicios->dia_termino}}</option>
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                            
+                                                <option value="Jueves">Jueves</option>
+                                                <option value="Viernes">Viernes</option>
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                            
+                                                 @elseif($servicios->dia_termino=='Jueves')
+                                              <select class="form-control" id="dia_termino" name="dia_termino">
+                                                  <option value="{{$servicios->dia_termino}}">{{$servicios->dia_termino}}</option>
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                                    <option value="Miercoles">Miercoles</option>
+                                              
+                                                <option value="Viernes">Viernes</option>
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                           
+                                                  @elseif($servicios->dia_termino=='Viernes')
+                                              <select class="form-control" id="dia_termino" name="dia_termino">
+                                                 <option value="{{$servicios->dia_termino}}">{{$servicios->dia_termino}}</option>  
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                                    <option value="Miercoles">Miercoles</option>
+                                                    <option value="Jueves">Jueves</option>
+                                                                                           
+                                                <option value="Sabado">Sabado</option>
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                             
+                                                     @elseif($servicios->dia_termino=='Sabado')
+                                              <select class="form-control" id="dia_termino" name="dia_termino">
+                                                  <option value="{{$servicios->dia_termino}}">{{$servicios->dia_termino}}</option> 
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                                    <option value="Miercoles">Miercoles</option>
+                                                    <option value="Jueves">Jueves</option>
+                                                    <option value="Viernes">Viernes</option>
+                                                                                           
+                                                
+                                                
+                                                <option value="Domingo">Domingo</option>
+                                              </select>
+                                              
+                                              @elseif($servicios->dia_termino=='Domingo')
+                                              <select class="form-control" id="dia_termino" name="dia_termino">
+                                                  <option value="{{$servicios->dia_termino}}">{{$servicios->dia_termino}}</option>                                              
+                                                
+                                                 <option value="Lunes">Lunes</option>
+                                                  <option value="Martes">Martes</option>
+                                                    <option value="Miercoles">Miercoles</option>
+                                                    <option value="Jueves">Jueves</option>
+                                                    <option value="Viernes">Viernes</option>      
+                                                <option value="Sabado">Sabado</option>
+                                              
+                                              
+                                              </select>
+                                              @endif
+                                          </div>
+                                           <div class="col-lg-3 col-xl-3">
+                                           <br>
+                                           
+                                          <span>Horario</span>
+                                             
+                                          </div>
+                                          <div class="col-lg-4 col-xl-4">
+                                                 <br>
+                                     
+                                                  <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+                                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker3" value="{{$servicios->horario_apertura}}" autocomplete="off" name="horario_apertura"/>
+                                                    <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                                    </div>
+                                                </div>
+                                          </div>
+                                          <div class="col-lg-1 col-xl-1">
+                                              <br>
+                                              <span>a</span>
+                                          </div>
+                                        <div class="col-lg-4 col-xl-4">
+                                              <br>
+                                                <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2" value="{{$servicios->horario_cierre}}" autocomplete="off" name="horario_cierre"/>
+                                                    <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                                    </div>
+                                                    
+                                        
+                                          </div>
+                                           
+                                         
                                         </div>
-                                        <div class="form-group">
-                                        <label for="example-textarea-input">Descripción</label>
-                                        <textarea class="form-control" id="descripcion" name="descripcion" rows="4" placeholder="Descripción servicio">{{$servicios->descripcion_servicio}}</textarea>
+                                        </div>
+                                        <div class="form-group row">
+                                        <label for="example-textarea-input" class="col-lg-12">Descripción</label>
+                                           <div class="col-lg-12 col-xl-12">
+                                        <textarea class="form-control" id="descripcion" name="descripcion_servicio" rows="4" placeholder="Descripción servicio">{{$servicios->descripcion_servicio}}</textarea>
+                                            </div>
                                         </div>
                                       <!--  <div class="form-group">
                                             <label class="d-block" for="example-file-input">Cargar imagen</label>
@@ -130,5 +325,29 @@
                         
                     </div>
 </div>
+
+@endsection
+@section('js_after') 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+ <script src="https://rawgit.com/tempusdominus/bootstrap-4/master/build/js/tempusdominus-bootstrap-4.js"></script>
+ <script type="text/javascript">
+           $(function () {
+                $('#datetimepicker3').datetimepicker({
+                    format: 'LT'
+                });
+            });
+  
+        </script>
+        
+    <script>
+
+      $(function () {
+                $('#datetimepicker2').datetimepicker({
+                    format: 'LT'
+                });
+            });
+</script>
+
 
 @endsection

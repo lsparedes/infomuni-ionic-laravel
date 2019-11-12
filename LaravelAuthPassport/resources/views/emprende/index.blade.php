@@ -36,7 +36,8 @@
                                     <tr>
                                         <th class="text-center" style="width: 80px;">#</th>
                                         <th>Nombre</th>
-                                        <th>Email</th>
+                                        <th>Contacto</th>
+                                        <th>Correo</th>
                                         <th>Dirección</th>
                                         <th>Horario</th>
                                         <th>Descripción</th>
@@ -49,9 +50,10 @@
                                   <td>{{$servicio->id}}</td>
                                    <td>{{$servicio->nombre}}</td>
                                     <td>{{$servicio->contacto}}</td>
+                                    <td>{{$servicio->correo}}</td>
                                      <td>{{$servicio->direccion}}</td>
                                      
-                                      <td>{{$servicio->horario_apertura}} - {{$servicio->horario_cierre}}</td>
+                                      <td>{{$servicio->dia_inicio}} a {{$servicio->dia_termino}}, {{$servicio->horario_apertura}} - {{$servicio->horario_cierre}}</td>
                                 <td>{{$servicio->descripcion_servicio}}</td>
                                     
                                     <td><div class="dropdown">

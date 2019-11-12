@@ -17,7 +17,7 @@ class Eventos extends Migration
             $table->Increments('id');
             $table->string('nombre', 70);
             $table->string('lugar', 90);
-            $table->date('fecha');
+            $table->string('fecha', 70);
             $table->longText('descripcion');
             $table->string('imagen', 70)->nullable();
             $table->integer('users_id')->unsigned();

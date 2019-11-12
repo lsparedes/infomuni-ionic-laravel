@@ -9,6 +9,6 @@ class Mapa extends Model
      protected $table = 'mapa';
     
      protected $fillable = [
-    'titulo', 'lat', 'lng'
+    'titulo','horario_apertura','horario_cierre','lat', 'lng'
   ];
 }

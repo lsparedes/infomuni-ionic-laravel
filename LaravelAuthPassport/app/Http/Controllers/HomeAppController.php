@@ -14,7 +14,10 @@ class HomeAppController extends Controller
      */
     public function index()
     {
-        $todo = DB::table('home')->orderBy('info','desc')->get();
+        $todo = DB::table('home')
+                ->where('tipo','=','servicios')
+                ->orWhere('tipo','=','eventos')
+                ->orderBy('info','desc')->get();
         return response()->json($todo);
 
     }
@@ -48,7 +51,7 @@ class HomeAppController extends Controller
      */
     public function show($id,$tipo)
     {
-        $detalle = DB::table('home')->select('home.nombre','home.donde','home.info','home.imagen','home.tipo','detalle_home.descripcion','detalle_home.infoextra1','detalle_home.infoextra2','detalle_home.tipo')
+        $detalle = DB::table('home')->select('home.nombre','home.donde','home.info','home.imagen','home.tipo','detalle_home.descripcion','detalle_home.infoextra1','detalle_home.infoextra2','detalle_home.tipo','detalle_home.diainicio','detalle_home.diafinal','detalle_home.correo')
         ->leftJoin('detalle_home','detalle_home.id','=','home.id')
         ->where('detalle_home.id','=',$id)
         ->where('home.tipo','=',$tipo)
