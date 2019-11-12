@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, AlertController, LoadingController
 import { AuthProvider } from '../../providers/auth/auth';
 import { decodeLaravelErrors } from '../../functions/Helpers';
 import { HomePage } from '../home/home';
+
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -78,6 +79,7 @@ export class AuthPage {
 
   doLogin (data: any)
   {
+    //this.loading.present();
     let correo = this.formLogin.email;
     console.log(this.formLogin.email);
     this.http.get('http://integralgest.cl/infomuni/api/users/'+correo)
@@ -128,11 +130,14 @@ export class AuthPage {
     this.authService.register(this.formRegister)
       .then((response: any) => {
 
-        console.log(response)
-        this.doLogin({
-          email: this.formRegister.email,
-          password: this.formRegister.password,
-        });
+        console.log(response);
+        // this.doLogin({
+        //   email: this.formRegister.email,
+        //   password: this.formRegister.password,
+        // });
+         this.presentToast("¡Has sido registrado correctamente!");
+         this.navCtrl.setRoot(AuthPage);
+
         this.loading.dismiss();
       })
       .catch((err: any) => {

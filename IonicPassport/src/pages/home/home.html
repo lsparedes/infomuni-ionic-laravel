@@ -43,8 +43,9 @@
   </ion-refresher>
 
 
-  <div padding style="text-align:center;" >
-    <p style="font-size:1.6rem;"><b>¡Bienvenido!</b> <br>Aquí encontrarás todas las novedades de tu municipalidad.</p>
+
+  <div padding style="text-align:center;" *ngIf="!!user">
+    <p style="font-size:1.6rem;"><b>¡Bienvenido {{ user.name }}!</b> <br>Aquí encontrarás todas las novedades de tu municipalidad.</p>
     <!-- <img src="../../assets/imgs/hualpen.png" alt="" width="80%"> -->
   </div>
   <hr>
