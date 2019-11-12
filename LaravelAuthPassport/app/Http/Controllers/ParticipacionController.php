@@ -10,6 +10,8 @@ use App\Pregunta;
 
 use App\RespuestaEncuesta;
 
+use App\Responde;
+
 use DataTables;
 
 use DB;
@@ -77,8 +79,9 @@ class ParticipacionController extends Controller
                 //$encuestas->tipo   = $request->cantidad_respuestas;
                 $encuestas->users_id = auth()->id();
                 $encuestas->save();
+            
                 
-                $idmax                   = Encuesta::max('id');
+                $idmax                   = Encuesta::max('id');     
                 $preguntas               = new Pregunta;
                 $preguntas->pregunta     = $request->preguntas;
                 $preguntas->tipo = $request->cantidad_respuestas;

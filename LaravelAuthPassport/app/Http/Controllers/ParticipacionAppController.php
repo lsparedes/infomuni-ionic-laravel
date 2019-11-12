@@ -17,16 +17,16 @@ class ParticipacionAppController extends Controller
      */
     public function encuestas($id)
     {
-       
-    
-      $encuestas = DB::table('encuestas')
-                   ->join('preguntas','encuestas.id','=','preguntas.encuestas_id')
-                   ->join('respuestas','preguntas.id','=','respuestas.preguntas_id')
-                   ->where('respuestas.users_id','=',$id)
-                   ->where('estado','=','activada')->get();
+
+      
+      $data = DB::table('encuestas')
+                   ->select('encuestas.id','encuestas.nombre')
+                   ->join('responde','encuestas.id','=','responde.encuestas_id')
+                   ->where('responde.estado','=','no_respondida')
+                   ->where('responde.users_id','=',$id)->get();
         
 
-      return  response()->json($encuestas);
+      return  response()->json($data);
     }
     
     public function resultados(){
@@ -63,6 +63,12 @@ class ParticipacionAppController extends Controller
 
         //dd($pregunta->id);
         $encuesta->save();
+        
+        DB::table('responde')
+                ->where('users_id', $request->username)
+                ->where('encuestas_id', $request->encuesta)
+                ->update(['estado' => 'respondida']);
+              
 
 
     }
