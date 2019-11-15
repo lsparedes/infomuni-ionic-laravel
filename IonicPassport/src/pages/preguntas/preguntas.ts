@@ -112,17 +112,20 @@ export class PreguntasPage {
    console.log("el id es: "+identificador);
    console.log("la pregunta es: "+this.hola);
    console.log("seleccion: "+this.seleccion);
+   console.log("encuesta: "+this.id);
 
    postData.append('username',identificador);
    postData.append('pregunta',this.hola);
    postData.append('respuesta_seleccionada',this.seleccion);
+   postData.append('encuesta',this.id);
 
 
    this.data = this.http.post(url, postData);
    this.data.subscribe(data=>{
      console.log(data);
      this.presentToast("Encuesta respondida con éxito!");
-     this.navCtrl.push(ParticipacionPage);
+     //this.navCtrl.push(ParticipacionPage);
+     this.navCtrl.pop();
    })
  }
 
