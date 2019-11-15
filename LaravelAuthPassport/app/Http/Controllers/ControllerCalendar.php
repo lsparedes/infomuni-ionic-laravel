@@ -19,6 +19,25 @@ class ControllerCalendar extends Controller
     
 
    public function create(Request $request){
+       
+         $request->validate([
+            
+                    'titulo'              => 'required|string|max:70',
+                    'lugar'     => 'required|string|max:90',
+                    'fecha'            => 'required|string',
+                    'descripcion'          => 'required|string|max:240'
+                
+            
+            ],
+            [   
+            'titulo.required'    => 'El campo nombre evento es obligatorio.',
+            'titulo.max'      => 'El campo nombre evento debe tener como máximo 70 caracteres.',
+            'lugar.required' => 'El campo lugar es obligatorio.',
+            'lugar.max'      => 'El campo lugar debe tener como máximo 90 caracteres.',
+            'fecha.required' => 'El campo fecha es obligatorio.',
+            'descripcion.required' => 'El campo descripcion es obligatorio.',
+            'descripcion.max'      => 'El campo direccion debe tener como máximo 240 caracteres.',
+        ]);
 
        $ruta = public_path().'/img/eventos/';
         $imagenOriginal = $request->file('image');
@@ -37,7 +56,8 @@ class ControllerCalendar extends Controller
         'users_id' => auth()->id(),
       ]);
 
-      return back()->with('success', 'Evento creado exitosamente!');
+      return redirect()->route('eventos.index')
+                        ->with('info', 'El evento '.$request->titulo.' fue creado exitosamente!');
          
                         
 
@@ -231,10 +251,28 @@ class ControllerCalendar extends Controller
     }
         public function update(Request $request, $id)
     {
-        $eventos = Evento::find($id);
             
-   
- 
+        $request->validate([
+            
+                    'titulo'              => 'required|string|max:70',
+                    'lugar'     => 'required|string|max:90',
+                    'fecha'            => 'required|string',
+                    'descripcion'          => 'required|string|min:0|max:99999999'
+                
+            
+        ],
+        [   
+            'titulo.required'    => 'El campo nombre evento es obligatorio.',
+            'titulo.max'      => 'El campo nombre evento debe tener como máximo 70 caracteres.',
+            'lugar.required' => 'El campo lugar es obligatorio.',
+            'lugar.max'      => 'El campo lugar debe tener como máximo 90 caracteres.',
+            'fecha.required' => 'El campo fecha es obligatorio.',
+            'descripcion.required' => 'El campo descripcion es obligatorio.',
+            'descripcion.max'      => 'El campo direccion debe tener como máximo 240 caracteres.',
+        ]);
+            
+        $eventos = Evento::find($id);
+
         if($request->image==null){
             
             $eventos->nombre = $request->titulo;

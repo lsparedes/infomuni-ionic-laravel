@@ -41,9 +41,40 @@ class EmprendedorController extends Controller
     public function store(Request $request)
     {
 
+    
         
         $servicio = new Servicio;
-        
+            
+        $request->validate(
+            [
+            
+                    'nombre'              => 'required|string|max:70',
+                    'direccion'     => 'required|string|max:70',
+                    'contacto'            => 'required|numeric',
+                    'correo'          => 'required|string|min:0|max:99999999',
+                    'dia_inicio'       => 'required|not_in:0',
+                    'dia_termino'              => 'required|not_in:0',
+                    'horario_apertura'            => 'required',
+                    'horario_cierre'          => 'required',
+                    'descripcion_servicio'          => 'required|string|max:240'
+            
+            ],
+            [   
+            'nombre.required'    => 'El campo nombre servicio es obligatorio.',
+            'nombre.max'      => 'El campo nombre servicio debe tener como máximo 70 caracteres.',
+            'direccion.required' => 'El campo direccion es obligatorio.',
+            'direccion.max'      => 'El campo direccion debe tener como máximo 70 caracteres.',
+            'contacto.required' => 'El campo contacto es obligatorio.',
+            'contacto.numeric'      => 'El campo contacto solo permite números.',
+            'correo.required' => 'El campo correo es obligatorio.',
+            'dia_inicio.required' => 'El campo día es obligatorio.',
+            'dia_termino.required' => 'El campo día es obligatorio.',
+            'horario_apertura.required' => 'El campo apertura es obligatorio.',
+            'horario_cierre.required' => 'El campo cierre es obligatorio.',
+            'descripcion_servicio.required' => 'El campo descripcion es obligatorio.',
+            'descripcion_servicio.max'      => 'El campo direccion debe tener como máximo 240 caracteres.',
+        ]
+        );
         //$ruta = 'equilibratechile.com/infomuni/img/';
         //$ruta = public_path().'/img/servicios/';
         //$imagenOriginal = $request->file('image');
@@ -136,6 +167,36 @@ class EmprendedorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
+          $request->validate([
+            
+                    'nombre'              => 'required|string|max:70',
+                    'direccion'     => 'required|string|max:70',
+                    'contacto'            => 'required|numeric',
+                    'correo'          => 'required|string|min:0|max:99999999',
+                    'dia_inicio'       => 'required',
+                    'dia_termino'              => 'required',
+                    'horario_apertura'            => 'required',
+                    'horario_cierre'          => 'required',
+                    'descripcion_servicio'          => 'required|string|max:240'
+            
+            ],
+            [   
+            'nombre.required'    => 'El campo nombre servicio es obligatorio.',
+            'nombre.max'      => 'El campo nombre servicio debe tener como máximo 70 caracteres.',
+            'direccion.required' => 'El campo direccion es obligatorio.',
+            'direccion.max'      => 'El campo direccion debe tener como máximo 70 caracteres.',
+            'contacto.required' => 'El campo contacto es obligatorio.',
+            'contacto.numeric'      => 'El campo contacto solo permite números.',
+            'correo.required' => 'El campo correo es obligatorio.',
+            'dia_inicio.required' => 'El campo día es obligatorio.',
+            'dia_termino.required' => 'El campo día es obligatorio.',
+            'horario_apertura.required' => 'El campo apertura es obligatorio.',
+            'horario_cierre.required' => 'El campo cierre es obligatorio.',
+            'descripcion_servicio.required' => 'El campo descripcion es obligatorio.',
+            'descripcion_servicio.max'      => 'El campo direccion debe tener como máximo 240 caracteres.',
+        ]);
+        
         $servicio = Servicio::find($id);
         $servicio->nombre = $request->nombre;
         $servicio->direccion = $request->direccion;

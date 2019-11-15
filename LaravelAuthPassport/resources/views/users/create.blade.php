@@ -47,11 +47,17 @@
                                     <div class="col-lg-8 col-xl-5">
                                         <div class="form-group">
                                             <label for="example-text-input">Nombre</label>
-                                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre usuario">
+                                            <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre" name="nombre" placeholder="Nombre usuario">
+                                             @if ($errors->has('nombre'))
+                                            <div class="invalid-feedback">{{ $errors->first('nombre') }}</div>
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <label for="example-email-input">Correo</label>
-                                            <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo usuario">
+                                            <input type="email" class="form-control @error('correo') is-invalid @enderror" id="correo" name="correo" placeholder="Correo usuario">
+                                              @if ($errors->has('correo'))
+                                            <div class="invalid-feedback">{{ $errors->first('correo') }}</div>
+                                            @endif
                                         </div>
                                       
                                          <button type="submit" class="btn btn-sm btn-outline-danger btn-block">Guardar usuario</button>

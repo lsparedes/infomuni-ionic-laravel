@@ -59,19 +59,31 @@
                                     <div class="col-lg-8 col-xl-5">
                                         <div class="form-group">
                                             <label for="example-text-input">Nombre servicio</label>
-                                            <input type="text" class="form-control" id="nombre_servicio" name="nombre" placeholder="Nombre servicio" value="{{$servicios->nombre}}">
+                                            <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre_servicio" name="nombre" placeholder="Nombre servicio" value="{{$servicios->nombre}}">
+                                             @if ($errors->has('nombre'))
+                                                            <div class="invalid-feedback">{{ $errors->first('nombre') }}</div>
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <label for="example-email-input">Dirección</label>
-                                            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección del servicio" value="{{$servicios->direccion}}">
+                                            <input type="text" class="form-control @error('direccion') is-invalid @enderror" id="direccion" name="direccion" placeholder="Dirección del servicio" value="{{$servicios->direccion}}">
+                                            @if ($errors->has('direccion'))
+                                                            <div class="invalid-feedback">{{ $errors->first('direccion') }}</div>
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <label for="example-password-input">Contacto</label>
-                                            <input type="text" class="form-control" id="contacto" name="contacto" placeholder="Contacto" value="{{$servicios->contacto}}">
+                                            <input type="text" class="form-control @error('contacto') is-invalid @enderror" id="contacto" name="contacto" placeholder="Contacto" value="{{$servicios->contacto}}">
+                                             @if ($errors->has('contacto'))
+                                                            <div class="invalid-feedback">{{ $errors->first('contacto') }}</div>
+                                            @endif
                                         </div>
                                             <div class="form-group">
                                             <label for="example-password-input">Correo</label>
-                                            <input type="email" class="form-control" id="correo" name="correo" value="{{$servicios->correo}}">
+                                            <input type="email" class="form-control @error('correo') is-invalid @enderror" id="correo" name="correo" value="{{$servicios->correo}}">
+                                               @if ($errors->has('correo'))
+                                                            <div class="invalid-feedback">{{ $errors->first('correo') }}</div>
+                                            @endif
                                         </div>
                                                  <div class="form-group row">
                                           <label for="example-password-input" class="col-lg-12">Atención</label>
@@ -299,7 +311,10 @@
                                         <div class="form-group row">
                                         <label for="example-textarea-input" class="col-lg-12">Descripción</label>
                                            <div class="col-lg-12 col-xl-12">
-                                        <textarea class="form-control" id="descripcion" name="descripcion_servicio" rows="4" placeholder="Descripción servicio">{{$servicios->descripcion_servicio}}</textarea>
+                                        <textarea class="form-control @error('descripcion_servicio') is-invalid @enderror" id="descripcion" name="descripcion_servicio" rows="4" placeholder="Descripción servicio">{{$servicios->descripcion_servicio}}</textarea>
+                                              @if ($errors->has('descripcion_servicio'))
+                                                            <div class="invalid-feedback">{{ $errors->first('descripcion_servicio') }}</div>
+                                            @endif
                                             </div>
                                         </div>
                                       <!--  <div class="form-group">

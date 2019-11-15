@@ -30,55 +30,55 @@
                              <form action="{{ asset('/Evento/create/') }}" method="post" enctype="multipart/form-data">
                                @csrf
                                 <!-- Basic Elements -->
-                                                            
-                            @if (count($errors) > 0)
-                                    <div class="alert alert-danger">
-                                     <button type="button" class="close" data-dismiss="alert">×</button>
-                                     <ul>
-                                      @foreach ($errors->all() as $error)
-                                       <li>{{ $error }}</li>
-                                      @endforeach
-                                     </ul>
-                                    </div>
-                                   @endif
-                                   @if ($message = Session::get('success'))
-                                   <div class="alert alert-success alert-block">
-                                    <button type="button" class="close" data-dismiss="alert">×</button>
-                                      <strong>{{ $message }}</strong>
-                                   </div>
-                                   @endif
+                                                
+                                   
+                              @include('emprende.form.info')
                                 <h2 class="content-heading pt-0">Información</h2>
                                 <div class="row push">
                                     <div class="col-lg-4">
 
                                         <p class="text-muted">
                                             Complete la siguiente información
+                                          
                                         </p>
 
                                     </div>
                                     <div class="col-lg-8 col-xl-5">
                                         <div class="form-group">
                                             <label for="example-text-input">Nombre evento</label>
-                                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Nombre evento">
+                                            <input type="text" class="form-control @error('titulo') is-invalid @enderror" id="titulo" name="titulo" placeholder="Nombre evento" value="{{old('titulo')}}">
+                                                @if ($errors->has('titulo'))
+                                                            <div class="invalid-feedback">{{ $errors->first('titulo') }}</div>
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <label for="example-email-input">Lugar</label>
-                                            <input type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar">
+                                            <input type="text" class="form-control @error('lugar') is-invalid @enderror" id="lugar" name="lugar" placeholder="Lugar" value="{{old('lugar')}}">
+                                               @if ($errors->has('lugar'))
+                                                            <div class="invalid-feedback">{{ $errors->first('lugar') }}</div>
+                                            @endif
                                         </div>
                                            <div class="form-group">
                                             <label for="example-password-input">Fecha</label>
                                              
-                                            <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Fecha">
+                                            <input type="date" class="form-control @error('fecha') is-invalid @enderror" id="fecha" name="fecha" placeholder="Fecha" value="{{old('fecha')}}">
+                                              @if ($errors->has('fecha'))
+                                                            <div class="invalid-feedback">{{ $errors->first('fecha') }}</div>
+                                            @endif
                                         </div>
                                     
                                    
                                         <div class="form-group">
                                             <label for="example-textarea-input">Descripción</label>
-                                            <textarea class="form-control" id="descripcion" name="descripcion" rows="4" placeholder="Descripción servicio"></textarea>
+                                            <textarea class="form-control @error('descripcion') is-invalid @enderror" id="descripcion" name="descripcion" rows="4" placeholder="Descripción evento" value="{{old('descripcion')}}"></textarea>
+                                               @if ($errors->has('descripcion'))
+                                                            <div class="invalid-feedback">{{ $errors->first('descripcion') }}</div>
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <label class="d-block" for="example-file-input">Cargar imagen</label>
                                             <input type="file" id="image" name="image">
+                                           
                                         </div>
                                          <button type="submit" class="btn btn-sm btn-outline-danger btn-block">Guardar evento</button>
                                           <!--<button type="submit" class="btn btn-block btn-hero-primary btn-block btn-hero-sm">

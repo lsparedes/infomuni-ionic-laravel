@@ -46,6 +46,19 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            
+        'nombre'              => 'required',
+        'correo'     => 'required',
+                  
+            
+        ],
+                          
+        [   
+            'nombre.required'    => 'El campo nombre es obligatorio.',
+            'correo.max'      => 'El campo correo es obligatorio.'
+        ]);
+        
         $user = new User;
 
         $user->name      = $request->nombre;
@@ -90,6 +103,18 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+          $request->validate([
+            
+          'nombre'              => 'required',
+          'correo'     => 'required',
+                  
+            
+         ],
+        [   
+            'nombre.required'    => 'El campo nombre es obligatorio.',
+            'correo.max'      => 'El campo correo es obligatorio.'
+        ]);
+        
         $user = User::find($id);
 
         $user->name      = $request->nombre;
@@ -112,6 +137,21 @@ class UsersController extends Controller
 
      public function UpdateProfile(Request $request, $id)
     {
+         
+        $request->validate([
+            
+        'name'              => 'required',
+        'email'     => 'required',
+        'new_password' => 'required'
+                  
+            
+        ],
+        [   
+            'name.required'    => 'El campo nombre es obligatorio.',
+            'email.max'      => 'El campo correo es obligatorio.',
+            'new_password.required' => 'El campo nueva contraseña es obligatorio.'
+        ]);
+         
         $user = User::find($id);
 
         $user->name      = $request->name;

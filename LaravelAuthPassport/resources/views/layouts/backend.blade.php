@@ -331,6 +331,7 @@
 
         <!-- Laravel Scaffolding JS -->
         <script src="{{ asset('js/dashmix.app.min.js') }}"></script>
+        
         <!-- Page JS Plugins -->
        
          <script src="{{ asset('js/mascampos.js') }}"></script>

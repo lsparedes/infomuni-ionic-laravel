@@ -47,8 +47,10 @@
        
             <div class="form-group">
                <label for="">Nombre</label>
-               <input type="text" name="title" class="form-control input-sm" value="{{$mapa->titulo}}">
-                
+               <input type="text" name="title" class="form-control input-sm @error('title') is-invalid @enderror" value="{{$mapa->titulo}}">
+                  @if ($errors->has('title'))
+                        <div class="invalid-feedback">{{ $errors->first('title') }}</div>
+                        @endif
             </div>
                      <div class="form-group row">
                      <label for="example-password-input" class="col-lg-12">Atención</label>
@@ -276,13 +278,17 @@
           
             <div class="form-group">
                <label for="">Contacto</label>
-               <input type="text" name="contacto" class="form-control input-sm" value="{{$mapa->contacto}}">
-                
+               <input type="text" name="contacto" class="form-control input-sm @error('contacto') is-invalid @enderror" value="{{$mapa->contacto}}">
+                 @if ($errors->has('contacto'))
+                        <div class="invalid-feedback">{{ $errors->first('contacto') }}</div>
+                        @endif
             </div>
             <div class="form-group">
                <label for="">Pagina web</label>
-               <input type="text" name="paginaweb" class="form-control input-sm" value="{{$mapa->paginaweb}}">
-                
+               <input type="text" name="paginaweb" class="form-control input-sm @error('paginaweb') is-invalid @enderror" value="{{$mapa->paginaweb}}">
+                 @if ($errors->has('paginaweb'))
+                        <div class="invalid-feedback">{{ $errors->first('paginaweb') }}</div>
+                        @endif
             </div>
             <div class="form-group">
                 <label for="">Tipo</label>

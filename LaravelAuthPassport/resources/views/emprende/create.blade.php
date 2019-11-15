@@ -42,6 +42,7 @@
                                   @include('emprende.form.info')
                                 <h2 class="content-heading pt-0">Ingreso de información</h2>
                                 <div class="row push">
+                                  
                                     <div class="col-lg-4">
 
                                         <p class="text-muted">
@@ -50,21 +51,35 @@
 
                                     </div>
                                     <div class="col-lg-8 col-xl-5">
+                            
                                         <div class="form-group">
                                             <label for="example-text-input">Nombre servicio*</label>
-                                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre servicio">
+                                            <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre" name="nombre" placeholder="Nombre servicio" value="{{old('nombre')}}">
+                                            @if ($errors->has('nombre'))
+                                                            <div class="invalid-feedback">{{ $errors->first('nombre') }}</div>
+                                            @endif
                                         </div>
+                                       
                                         <div class="form-group">
                                             <label for="example-email-input">Dirección*</label>
-                                            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección del servicio">
+                                            <input type="text" class="form-control @error('direccion') is-invalid @enderror" id="direccion" name="direccion" placeholder="Dirección del servicio" value="{{old('direccion')}}">
+                                            @if ($errors->has('direccion'))
+                                                            <div class="invalid-feedback">{{ $errors->first('direccion') }}</div>
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <label for="example-password-input">Télefono*</label>
-                                            <input type="text" class="form-control" id="contacto" name="contacto" placeholder="Télefono contacto">
+                                            <input type="number" class="form-control @error('contacto') is-invalid @enderror" id="contacto" name="contacto" placeholder="Télefono contacto" value="{{old('contacto')}}">
+                                                 @if ($errors->has('contacto'))
+                                                            <div class="invalid-feedback">{{ $errors->first('contacto') }}</div>
+                                                 @endif
                                         </div>
                                           <div class="form-group">
                                             <label for="example-password-input">Correo*</label>
-                                            <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo">
+                                            <input type="email" class="form-control @error('correo') is-invalid @enderror" id="correo" name="correo" placeholder="Correo" value="{{old('correo')}}">
+                                                @if ($errors->has('correo'))
+                                                            <div class="invalid-feedback">{{ $errors->first('correo') }}</div>
+                                                 @endif
                                         </div>
                                           <div class="form-group row">
                                           <label for="example-password-input" class="col-lg-12">Atención*</label>
@@ -75,8 +90,8 @@
                                              
                                           </div>
                                           <div class="col-lg-4 col-xl-4">
-                                              <select class="form-control" id="dia_inicio" name="dia_inicio">
-                                                <option>Seleccionar</option>
+                                              <select class="form-control @error('dia_inicio') is-invalid @enderror" id="dia_inicio" name="dia_inicio">
+                                                <option value="0">Seleccionar</option>
                                                 <option value="Lunes">Lunes</option>
                                                 <option value="Martes">Martes</option>
                                                 <option value="Miercoles">Miercoles</option>
@@ -85,13 +100,16 @@
                                                 <option value="Sabado">Sabado</option>
                                                 <option value="Domingo">Domingo</option>
                                               </select>
+                                               @if ($errors->has('dia_inicio'))
+                                                            <div class="invalid-feedback">{{ $errors->first('dia_inicio') }}</div>
+                                                        @endif
                                           </div>
                                           <div class="col-lg-1 col-xl-1">
                                               <span>a</span>
                                           </div>
                                            <div class="col-lg-4 col-xl-4">
-                                               <select class="form-control" id="dia_termino" name="dia_termino">
-                                                <option>Seleccionar</option>
+                                               <select class="form-control  @error('dia_termino') is-invalid @enderror" id="dia_termino" name="dia_termino">
+                                                <option value="0">Seleccionar</option>
                                                 <option value="Lunes">Lunes</option>
                                                 <option value="Martes">Martes</option>
                                                 <option value="Miercoles">Miercoles</option>
@@ -100,6 +118,9 @@
                                                 <option value="Sabado">Sabado</option>
                                                 <option value="Domingo">Domingo</option>
                                               </select>
+                                                 @if ($errors->has('dia_termino'))
+                                                            <div class="invalid-feedback">{{ $errors->first('dia_termino') }}</div>
+                                                        @endif
                                           </div>
                                            <div class="col-lg-3 col-xl-3">
                                            <br>
@@ -110,11 +131,16 @@
                                           <div class="col-lg-4 col-xl-4">
                                                  <br>
                                                  <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
-                                                       <input type="text" class="form-control datetimepicker-input" id="datetimepicker3" name="horario_apertura" data-toggle="datetimepicker" data-target="#datetimepicker3" placeholder="Apertura" autocomplete="off"/>
+                                                       <input type="text" class="form-control datetimepicker-input @error('horario_apertura') is-invalid @enderror" id="datetimepicker3" name="horario_apertura" data-toggle="datetimepicker" data-target="#datetimepicker3" placeholder="Apertura" autocomplete="off"/>
                                                     <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="far fa-clock"></i></div>
                                                     </div>
+                                                    @if ($errors->has('horario_apertura'))
+                                                            <div class="invalid-feedback">{{ $errors->first('horario_apertura') }}</div>
+                                                        @endif  
                                                 </div>
+                                                
+                                                 
                                              
                                           </div>
                                           <div class="col-lg-1 col-xl-1">
@@ -124,12 +150,15 @@
                                         <div class="col-lg-4 col-xl-4">
                                               <br>
                                                   <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
-                                                       <input type="text" class="form-control datetimepicker-input" id="datetimepicker2" name="horario_cierre" data-toggle="datetimepicker" data-target="#datetimepicker2" placeholder="Cierre" autocomplete="off"/>
+                                                       <input type="text" class="form-control datetimepicker-input @error('horario_cierre') is-invalid @enderror" id="datetimepicker2" name="horario_cierre" data-toggle="datetimepicker" data-target="#datetimepicker2" placeholder="Cierre" autocomplete="off"/>
                                                     <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="far fa-clock"></i></div>
                                                     </div>
+                                                    @if ($errors->has('horario_cierre'))
+                                                            <div class="invalid-feedback">{{ $errors->first('horario_cierre') }}</div>
+                                                        @endif
                                                 </div>
-                                            
+                                             
                                           </div>
                                            
                                             <!--<div class="col-lg-12 col-xl-12">
@@ -178,7 +207,10 @@
                                       
                                         <div class="form-group">
                                             <label for="example-textarea-input">Descripción*</label>
-                                            <textarea class="form-control" id="descripcion_servicio" name="descripcion_servicio" rows="4" placeholder="Descripción servicio"></textarea>
+                                            <textarea class="form-control @error('descripcion_servicio') is-invalid @enderror" id="descripcion_servicio" name="descripcion_servicio" rows="4" placeholder="Descripción servicio" value="{{old('decripcion_servicio')}}"></textarea>
+                                             @if ($errors->has('descripcion_servicio'))
+                                                            <div class="invalid-feedback">{{ $errors->first('descripcion_servicio') }}</div>
+                                                        @endif
                                         </div>
                                     
                                          <button type="submit" class="btn btn-sm btn-outline-danger btn-block">Guardar emprendedor</button>

@@ -68,6 +68,8 @@ class ParticipacionController extends Controller
      */
     public function store(Request $request)
     {
+
+        
         $consulta = Encuesta::select('nombre')->where('nombre', $request->encuesta)->get();
         $hola=$request->otra;
         
@@ -84,7 +86,7 @@ class ParticipacionController extends Controller
                 $idmax                   = Encuesta::max('id');     
                 $preguntas               = new Pregunta;
                 $preguntas->pregunta     = $request->preguntas;
-                $preguntas->tipo = $request->cantidad_respuestas;
+                //$preguntas->tipo = $request->cantidad_respuestas;
                 $preguntas->encuestas_id = $idmax;
                 $preguntas->save();
                 $idmaxp = Pregunta::max('id');
@@ -108,7 +110,7 @@ class ParticipacionController extends Controller
                 $idmax                   = Encuesta::max('id');
                 $preguntas               = new Pregunta;
                 $preguntas->pregunta     = $request->preguntas;
-                $preguntas->tipo = $request->cantidad_respuestas;
+                //$preguntas->tipo = $request->cantidad_respuestas;
                 $preguntas->encuestas_id = $idmax;
                 $preguntas->save();
                 $idmaxp = Pregunta::max('id');
@@ -137,7 +139,7 @@ class ParticipacionController extends Controller
                 $idmax                   = Encuesta::max('id');
                 $preguntas               = new Pregunta;
                 $preguntas->pregunta     = $request->preguntas;
-                $preguntas->tipo = $request->cantidad_respuestas;
+                //$preguntas->tipo = $request->cantidad_respuestas;
                 $preguntas->encuestas_id = $idmax;
                 $preguntas->save();
                 $idmaxp = Pregunta::max('id');
@@ -160,7 +162,7 @@ class ParticipacionController extends Controller
                 $idmax                   = Encuesta::max('id');
                 $preguntas               = new Pregunta;
                 $preguntas->pregunta     = $request->preguntas;
-                $preguntas->tipo = $request->cantidad_respuestas;
+                //$preguntas->tipo = $request->cantidad_respuestas;
                 $preguntas->encuestas_id = $idmax;
                 $preguntas->save();
                 $idmaxp = Pregunta::max('id');

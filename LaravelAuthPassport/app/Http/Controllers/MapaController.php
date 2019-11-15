@@ -37,6 +37,35 @@ class MapaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            
+                    'title'              => 'required|string|max:70',
+                    'horarioapertura'     => 'required',
+                    'horariocierre'            => 'required',
+                    'dias1'          => 'required|not_in:0',
+                    'dias2'          => 'required|not_in:0',
+                    'contacto'          => 'required|integer',
+                    'paginaweb'          => 'required|string|max:70',
+                    'tipo'          => 'required|not_in:0',
+                    'searchmap' => 'required'
+                
+            
+        ],
+        [   
+            'title.required'    => 'El campo nombre es obligatorio.',
+            'title.max'      => 'El campo nombre debe tener como máximo 70 caracteres.',
+            'horarioapertura.required' => 'El campo horario apertura es obligatorio.',
+            'horariocierre.required' => 'El campo horario cierre es obligatorio.',
+            'dias1.required' => 'El campo día es obligatorio.',
+            'dias2.required' => 'El campo día es obligatorio.',
+            'contacto.required' => 'El campo contacto es obligatorio.',
+            'contacto.integer' => 'El campo contacto solo permite números.',
+            'paginaweb.required' => 'El campo página web es obligatorio.',
+            'paginaweb.max' => 'El campo pagina web debe tener como máximo 70 caracteres.',
+            'tipo.required'      => 'El campo tipo es obligatorio.',
+            'searchmap.required' => 'El campo de busqueda es obligatorio.'
+        ]);
+        
         $mapa = new Mapa;
         $mapa->titulo = $request->title;
         $mapa->horario_apertura = $request->horarioapertura;
@@ -89,6 +118,35 @@ class MapaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
+        $request->validate([
+            
+                    'title'              => 'required|string|max:70',
+                    'horarioapertura'     => 'required',
+                    'horariocierre'            => 'required',
+                    'dias1'          => 'required',
+                    'dias2'          => 'required',
+                    'contacto'          => 'required|integer',
+                    'paginaweb'          => 'required|string|max:70',
+                    'tipo'          => 'required'
+                
+            
+        ],
+        [   
+            'title.required'    => 'El campo nombre es obligatorio.',
+            'title.max'      => 'El campo nombre debe tener como máximo 70 caracteres.',
+            'horarioapertura.required' => 'El campo horario apertura es obligatorio.',
+            'horariocierre.required' => 'El campo horario cierre es obligatorio.',
+            'dias1.required' => 'El campo día es obligatorio.',
+            'dias2.required' => 'El campo día es obligatorio.',
+            'contacto.required' => 'El campo contacto es obligatorio.',
+            'contacto.integer' => 'El campo contacto solo permite números.',
+            'paginaweb.required' => 'El campo página web es obligatorio.',
+            'paginaweb.max' => 'El campo pagina web debe tener como máximo 70 caracteres.',
+            'tipo.required'      => 'El campo tipo es obligatorio.',
+            'searchmap.required' => 'El campo de busqueda es obligatorio.'
+        ]);
+        
         $mapa = Mapa::find($id);
         $mapa->titulo = $request->title;
         $mapa->horario_apertura = $request->horarioapertura;

@@ -48,11 +48,17 @@
                                     <div class="col-lg-8 col-xl-5">
                                         <div class="form-group">
                                             <label for="example-text-input">Nombre</label>
-                                            <input type="text" class="form-control" id="name" name="name" value="{{Auth::user()->name}}">
+                                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{Auth::user()->name}}">
+                                             @if ($errors->has('name'))
+                                             <div class="invalid-feedback">{{ $errors->first('name') }}</div>
+                                             @endif
                                         </div>
                                         <div class="form-group">
                                             <label for="example-email-input">Correo</label>
-                                            <input type="email" class="form-control" id="email" name="email" value="{{Auth::user()->email}}">
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{Auth::user()->email}}">
+                                            @if ($errors->has('email'))
+                                             <div class="invalid-feedback">{{ $errors->first('email') }}</div>
+                                             @endif
                                         </div>
                                         
                                       <!--  <div class="form-group">
@@ -61,7 +67,10 @@
                                         </div>-->
                                         <div class="form-group">
                                             <label for="example-email-input">Nueva contraseña</label>
-                                            <input type="password" class="form-control" id="new_password" name="new_password" placeholder="Nueva contraseña">
+                                            <input type="password" class="form-control @error('new_password') is-invalid @enderror" id="new_password" name="new_password" placeholder="Nueva contraseña">
+                                            @if ($errors->has('new_password'))
+                                             <div class="invalid-feedback">{{ $errors->first('new_password') }}</div>
+                                             @endif
                                         </div>
                                       
                                         <!-- <div class="form-group">
