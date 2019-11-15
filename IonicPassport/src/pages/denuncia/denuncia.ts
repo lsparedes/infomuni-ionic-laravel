@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App,ToastController, LoadingController,Loading} from 'ionic-angular';
+import { NavController, NavParams, App,ToastController, LoadingController,Loading} from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
@@ -9,14 +9,15 @@ import { EvidenciaPage } from '../evidencia/evidencia';
 
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
-import { AuthProvider } from '../../providers/auth/auth';
+
 import { UserProvider } from '../../providers/user/user';
+import { AuthProvider } from '../../providers/auth/auth';
 
 
 
 
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-denuncia',
   templateUrl: 'denuncia.html',
@@ -61,9 +62,6 @@ export class DenunciaPage {
                                       {
                                         this.tipos = data;
                                         console.log(data);
-                                      },
-                                      err => {
-                                        console.log("Oops! Problemas en la consulta de tipos");
                                       }
                                   );
               }
@@ -82,13 +80,10 @@ export class DenunciaPage {
         this.user = response;
         console.log("el id es: "+this.user.id);
       })
-      .catch(err => {
 
-
-      })
   }
 
-  presentToast(msg) {
+  presentToast(msg: string) {
     let toast = this.toastCtrl.create({
       message: msg,
       duration: 2000,
@@ -107,8 +102,6 @@ export class DenunciaPage {
 
     this.camera.getPicture(options).then((imageData) => {
       this.base64Image = 'data:image/jpeg;base64,' + imageData;
-    }, (err) => {
-
     });
   }
 
@@ -123,8 +116,6 @@ export class DenunciaPage {
     }
     this.camera.getPicture(options).then((imageData) => {
       this.base64Image = 'data:image/jpeg;base64,' + imageData;
-    }, (err) => {
-
     });
   }
 

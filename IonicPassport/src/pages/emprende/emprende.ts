@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, ToastController } from 'ionic-angular';
+import { NavController, NavParams, App, ToastController } from 'ionic-angular';
 
 import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 import { DetallesemprendePage } from '../detallesemprende/detallesemprende';
 import { Refresher } from 'ionic-angular';
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-emprende',
   templateUrl: 'emprende.html',

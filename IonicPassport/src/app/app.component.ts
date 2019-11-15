@@ -9,7 +9,7 @@ import { InfomapaPage } from '../pages/infomapa/infomapa';
 import { ParticipacionPage } from '../pages/participacion/participacion';
 import { EmprendePage } from '../pages/emprende/emprende';
 //import { EvidenciaPage } from '../pages/evidencia/evidencia';
-//import { PrincipalPage } from '../pages/principal/principal';
+import { PrincipalPage } from '../pages/principal/principal';
 
 
 
@@ -22,7 +22,7 @@ import { UserProvider } from '../providers/user/user';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = 'PrincipalPage';
+  rootPage: any = PrincipalPage;
   pages: Array<{title: string, component: any, icon: string}>;
   signal_app_id:string = '01dba292-79f5-4d49-bf3d-2b68486e15d0';
   firebase_id:string= '586230391111';
@@ -84,14 +84,10 @@ export class MyApp {
         this.user = response;
         console.log("el id es: "+this.user.id);
       })
-      .catch(err => {
-        //this.loading = false;
-      //  let alert = this.alertCtrl.create({ title: 'Error', message: 'Error on get user info', buttons: ['Ok'] });
-        //alert.present();
-      })
+
   }
 
-  openPage(page) {
+  openPage(page: { component: any; }) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);

@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams} from 'ionic-angular';
+import { NavController, NavParams} from 'ionic-angular';
 //import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 declare var google;
 
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-infomapa',
   templateUrl: 'infomapa.html',
@@ -50,7 +50,7 @@ export class InfomapaPage {
               console.log("fuera for <br>");
               console.log(data);
 
-              data.forEach(function(element) {
+              data.forEach(function(element: { lat: string; lng: string; tipo: string; DisplayName: string; ChaserLocation: string; titulo: string; dia_inicio: string; dia_termino: string; horario_apertura: string; horario_cierre: string; contacto: string; paginaweb: string; }) {
                 console.log("dentro for <br>");
                 console.log(element);
 
@@ -99,11 +99,7 @@ export class InfomapaPage {
 
 
 
-            },
-            err => {
-              console.log("Oops!");
-              //this.presentToast("No existen registros aún");
-          }
+            }
          );
 
 

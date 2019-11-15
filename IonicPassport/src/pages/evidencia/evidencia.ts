@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, ToastController } from 'ionic-angular';
+import { NavController, NavParams, App, ToastController } from 'ionic-angular';
 
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -7,7 +7,7 @@ import { DenunciaPage } from '../denuncia/denuncia';
 import { Observable } from 'rxjs/Observable';
 
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-evidencia',
   templateUrl: 'evidencia.html',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController, MenuController,ToastController  } from 'ionic-angular';
+import { NavController, NavParams, AlertController, LoadingController, MenuController,ToastController  } from 'ionic-angular';
 
 import { AuthProvider } from '../../providers/auth/auth';
 import { decodeLaravelErrors } from '../../functions/Helpers';
@@ -8,7 +8,7 @@ import { HomePage } from '../home/home';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-auth',
   templateUrl: 'auth.html',
@@ -47,7 +47,7 @@ export class AuthPage {
     this.checkAuthenticated();
   }
 
-  presentToast(msg) {
+  presentToast(msg: string) {
   let toast = this.toastCtrl.create({
     message: msg,
     duration: 2000,
@@ -57,9 +57,7 @@ export class AuthPage {
   toast.present();
 }
 
-  validar(usuario) {
 
-  }
 
   async checkAuthenticated ()
   {
@@ -89,10 +87,7 @@ export class AuthPage {
                        this.tipo = data.type;
 
                        console.log("El tipo es: "+this.tipo);
-                     },
-                     err => {console.log("Oops!");
-                     this.presentToast("No existen registros aún");
-                   }
+                     }
                  );
 
     this.loading.present();
@@ -153,7 +148,7 @@ export class AuthPage {
       })
   }
 
-  validateLoginData (data: any)
+  validateLoginData (_data: any)
   {
     return true;
   }

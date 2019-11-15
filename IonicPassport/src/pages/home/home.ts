@@ -27,8 +27,8 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     private alertCtrl: AlertController,
-    private authService: AuthProvider,
     private userService: UserProvider,
+    private authService: AuthProvider,
     public http: Http,
     private toastCtrl:ToastController
   ) {

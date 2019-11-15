@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, ToastController} from 'ionic-angular';
+import { NavController, NavParams, App, ToastController} from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { ParticipacionPage } from '../participacion/participacion';
+//import { ParticipacionPage } from '../participacion/participacion';
 import { UserProvider } from '../../providers/user/user';
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-preguntas',
   templateUrl: 'preguntas.html',

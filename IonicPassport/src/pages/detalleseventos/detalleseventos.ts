@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, ToastController} from 'ionic-angular';
+import { NavController, NavParams, App, ToastController} from 'ionic-angular';
 
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-detalleseventos',
   templateUrl: 'detalleseventos.html',
